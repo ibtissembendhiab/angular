@@ -1,0 +1,88 @@
+
+<div class="auth">
+    <div class="auth_left">
+        <div class="card">
+            <div class="text-center mb-2">
+                <a class="header-brand" [routerLink]="['/hr-dashboard']" href="javascript:void(0)"><i
+                        class="fe fe-command brand-logo"></i></a>
+            </div>
+            <div class="card-body">
+                <div class="card-title">Login to your account</div>
+
+                <form [formGroup]="loginForm"  (ngSubmit)="onSubmit(this.loginForm.controls['UserName'].value, this.loginForm.controls['Password'].value)">
+                    <div class="form-group">
+                      <label>Username</label>
+                      <input #UserName class="form-control"  name="UserName" formControlName="UserName" placeholder="Username" required autofocus>
+                    </div>
+                    <div class="form-group">
+                      <label>Password</label>
+                      <input #Password type="password" class="form-control" formControlName="Password" name="Password" placeholder="Password" required >
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-8 offset-md-2">
+                        <button type="submit" class="btn btn-primary btn-block" >Login</button>
+                      </div>
+                    </div>
+                  </form>
+
+                <!--<div class="form-group">
+                    <select class="custom-select">
+                        <option>Admin</option>
+                        <option>employee</option>
+                    </select>
+                </div>-->
+               <!--<form   class="mb-4" autocomplete="off" (submit)="onSubmit(form)">
+                <div class="form-group">
+                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" #UserName="ngModel"  [(ngModel)]="formModel.UserName"
+                       [(ngModel)]="formModel.Password"  >--> 
+                      <!--  <input type="email" placeholder="Enter email" class="form-control"  required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password <a [routerLink]="['/forgot-password']" href="javascript:void(0)"
+                            class="float-right small">I forgot
+                            password</a></label>
+                    <input type="password" class="form-control"  id="exampleInputPassword1" placeholder="Password" required>
+                </div>
+                <div class="form-group">
+                    <label class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" />
+                        <span class="custom-control-label">Remember me</span>
+                    </label>
+                </div>
+                <div class="form-footer">
+                    <a type="submit"  class="btn btn-primary btn-block"
+                        title="" [disabled]="form.invalid">Login</a>
+                </div>
+                </form> -->
+            </div>
+           <!-- <div class="text-center text-muted">
+                Don't have account yet? <a [routerLink]="['/register']"href="javascript:void(0)" >Create Account</a>
+            </div> -->
+        </div>
+    </div>
+   <!-- <div class="auth_right">
+        <carousel [isAnimated]="true">
+            <slide>
+                <img src="assets/images/slider1.svg" class="img-fluid" alt="first slide">
+                <div class="px-4 mt-4">
+                    <h4>Fully Responsive</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+            </slide>
+            <slide>
+                <img src="assets/images/slider2.svg" class="img-fluid" alt="second slide">
+                <div class="px-4 mt-4">
+                    <h4>Quality Code and Easy Customizability</h4>
+                    <p>There are many variations of passages of Lorem Ipsum available.</p>
+                </div>
+            </slide>
+            <slide>
+                <img src="assets/images/slider3.svg" class="img-fluid" alt="third slide">
+                <div class="px-4 mt-4">
+                    <h4>Cross Browser Compatibility</h4>
+                    <p>Overview We're a group of women who want to learn JavaScript.</p>
+                </div>
+            </slide>
+        </carousel>
+    </div>--> 
+</div>

@@ -1,0 +1,60 @@
+<div class="auth">
+    <div class="auth_left">
+        <div class="card">
+            <div class="text-center mb-5">
+                <a class="header-brand" [routerLink]="['/hr-dashboard']" href="javascript:void(0)"><i
+                        class="fe fe-command brand-logo"></i></a>
+            </div>
+            <div class="card-body">
+                <div class="card-title">Create new account</div>
+             <form [formGroup]="registerForm"  (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label class="form-label">User Name</label>
+                    <input type="text" class="form-control"  name="UserName" formControlName="UserName" placeholder="Enter username" [ngClass]="{ 'is-invalid': submitted && f.UserName.errors }">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email address</label>
+                    <input type="email" class="form-control" formControlName="Email" name="Email" placeholder="Enter email" [ngClass]="{ 'is-invalid': submitted && f.Email.errors }">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" class="form-control" formControlName="Password" name="Password" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.Password.errors }">
+                </div>
+               
+                <div class="form-footer">
+                    <button type="submit" class="btn btn-primary btn-block" [disabled]="!service.formModel.valid">Create new account</button>
+                </div>
+             </form>
+            </div>
+            <div class="text-center text-muted">
+                Already have account? <a [routerLink]="['/login']" href="javascript:void(0)">Sign in</a>
+            </div>
+            
+        </div>
+    </div>
+   <!-- <div class="auth_right">
+        <carousel [isAnimated]="true">
+            <slide>
+                <img src="assets/images/slider1.svg" class="img-fluid" alt="first slide">
+                <div class="px-4 mt-4">
+                    <h4>Fully Responsive</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                </div>
+            </slide>
+            <slide>
+                <img src="assets/images/slider2.svg" class="img-fluid" alt="second slide">
+                <div class="px-4 mt-4">
+                    <h4>Quality Code and Easy Customizability</h4>
+                    <p>There are many variations of passages of Lorem Ipsum available.</p>
+                </div>
+            </slide>
+            <slide>
+                <img src="assets/images/slider3.svg" class="img-fluid" alt="third slide">
+                <div class="px-4 mt-4">
+                    <h4>Cross Browser Compatibility</h4>
+                    <p>Overview We're a group of women who want to learn JavaScript.</p>
+                </div>
+            </slide>
+        </carousel>
+    </div> -->
+</div>
