@@ -3,7 +3,6 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import {
   ApexNonAxisChartSeries,
-  ApexPlotOptions,
   ApexChart,
   ChartComponent
 } from "ng-apexcharts";
@@ -12,7 +11,6 @@ export type ChartOptions = {
   series: ApexNonAxisChartSeries;
   chart: ApexChart;
   labels: string[];
-  plotOptions: ApexPlotOptions;
 
 };
 
@@ -72,14 +70,6 @@ export class PrTaskboardComponent implements OnInit {
       chart: {
         height: 150,
         type: "radialBar",
-      },
-
-      plotOptions: {
-        radialBar: {
-          hollow: {
-            size: "70%"
-          }
-        }
       },
       labels: ["REVENUE"]
     };

@@ -6,20 +6,14 @@
             <div class="dropdown">
                 <a [routerLink]="['/search']" href="javascript:void(0)" class="nav-link icon"><i
                         class="fa fa-search"></i></a>
-                <a [routerLink]="['/calender']" href="javascript:void(0)" class="nav-link icon app_inbox"><i
-                        class="fa fa-calendar"></i></a>
                 <a [routerLink]="['/contacts']" href="javascript:void(0)" class="nav-link icon xs-hide"><i
                         class="fa fa-id-card-o"></i></a>
-                <a [routerLink]="['/chat']" href="javascript:void(0)" class="nav-link icon xs-hide"><i
-                        class="fa fa-comments-o"></i></a>
                 <a [routerLink]="['/filemanager']" href="javascript:void(0)" class="nav-link icon app_file xs-hide"><i
                         class="fa fa-folder-o"></i></a>
             </div>
         </div>
         <div class="hright">
             <div class="dropdown">
-                <!-- <a href="javascript:void(0)" class="nav-link icon theme_btn"><i class="fa fa-paint-brush"
-                        data-toggle="tooltip" data-placement="right" title="Themes"></i></a> -->
                 <a href="javascript:void(0)" class="nav-link icon settingbar" (click)="toggleSettingMenu()"><i
                         class="fa fa-gear fa-spin" data-toggle="tooltip" data-placement="right"
                         title="Settings"></i></a>
@@ -82,7 +76,7 @@
                         <span class="custom-control-label">C</span>
                     </label>
                 </div>
-                <h6 class="font-14 font-weight-bold mt-4 text-muted">SubMenu List Icon</h6>
+               <h6 class="font-14 font-weight-bold mt-4 text-muted">SubMenu List Icon</h6>
                 <div class="custom-controls-stacked list_option">
                     <label class="custom-control custom-radio custom-control-inline">
                         <input type="radio" class="custom-control-input" (click)="onSubMenuIcon(1)"
@@ -101,7 +95,7 @@
                         <span class="custom-control-label">C</span>
                     </label>
                 </div>
-            </div>
+            </div> 
             <div>
                 <h6 class="font-14 font-weight-bold mt-4 text-muted">General Settings</h6>
                 <ul class="setting-list list-unstyled mt-1 setting_switch">
@@ -484,22 +478,14 @@
                         <a class="submenu" [routerLink]="['/hr-users']" href="javascript:void(0)"><span>Users</span></a>
                     </li>
                     <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a class="submenu"
-                            [routerLink]="['/hr-departments']" href="javascript:void(0)"><span>Departments</span></a>
+                            [routerLink]="['/hr-departments']" href="javascript:void(0)"><span>Groupes</span></a>
                     </li>
-                    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a class="submenu"
-                            [routerLink]="['/hr-employee']" href="javascript:void(0)"><span>Employee</span></a></li>
+       
                     <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a class="submenu"
                             [routerLink]="['/hr-activities']" href="javascript:void(0)"><span>Activities</span></a></li>
-                    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a class="submenu"
-                            [routerLink]="['/hr-holidays']" href="javascript:void(0)"><span>Holidays</span></a></li>
-                    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a class="submenu"
-                            [routerLink]="['/hr-events']" href="javascript:void(0)"><span>Events</span></a></li>
-                    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a class="submenu"
-                            [routerLink]="['/hr-payroll']" href="javascript:void(0)"><span>Payroll</span></a></li>
-                    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a class="submenu"
-                            [routerLink]="['/hr-accounts']" href="javascript:void(0)"><span>Accounts</span></a></li>
-                    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a class="submenu"
-                            [routerLink]="['/hr-reports']" href="javascript:void(0)"><span>Report</span></a></li>
+                  
+   
+                   
                 </ul>
             </li>
             <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
@@ -523,30 +509,8 @@
                             [routerLink]="['/project-todo-list']" href="javascript:void(0)">Todo List</a></li>
                 </ul>
             </li>
-            <li>
-                <a href="javascript:void(0)" (click)="isJobportalCollapsed = !isJobportalCollapsed"
-                    [attr.aria-expanded]="!isJobportalCollapsed" aria-controls="JobCollapsed"
-                    class="has-arrow arrow-c"><i class="icon-briefcase"></i><span>Job
-                        Portal</span></a>
-                <ul class="submenu" class="collapse" id="JobCollapsed" [collapse]="isJobportalCollapsed"
-                    [isAnimated]="true">
-                    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a class="submenu"
-                            [routerLink]="['/jobportal-job-dashboard']" href="javascript:void(0)"><span>Job
-                                Dashboard</span></a></li>
-                    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a class="submenu"
-                            [routerLink]="['/jobportal-positions']" href="javascript:void(0)"><span>Positions</span></a>
-                    </li>
-                    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a class="submenu"
-                            [routerLink]="['/jobportal-applicants']"
-                            href="javascript:void(0)"><span>Applicants</span></a></li>
-                    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a class="submenu"
-                            [routerLink]="['/jobportal-resumes']" href="javascript:void(0)"><span>Resumes</span></a>
-                    </li>
-                    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a class="submenu"
-                            [routerLink]="['/jobportal-settings']" href="javascript:void(0)"><span>Settings</span></a>
-                    </li>
-                </ul>
-            </li>
+          
+               
             <li>
                 <a href="javascript:void(0)" (click)="isAuthCollapsed = !isAuthCollapsed"
                     [attr.aria-expanded]="!isAuthCollapsed" aria-controls="AuthCollapsed" class="has-arrow arrow-c"><i
@@ -559,27 +523,17 @@
                             [routerLink]="['/register']" href="javascript:void(0)">Register</a></li>
                     <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a class="submenu"
                             [routerLink]="['/forgot-password']" href="javascript:void(0)">Forgot password</a></li>
-                    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a class="submenu"
-                            [routerLink]="['/error-404']" href="javascript:void(0)">404 error</a></li>
-                    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a class="submenu"
-                            [routerLink]="['/error-500']" href="javascript:void(0)">500 error</a></li>
                 </ul>
             </li>
-            <li class="g_heading">UI Elements</li>
-            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a
-                    [routerLink]="['/icon-fontawesome']" href="javascript:void(0)"><i
-                        class="icon-tag"></i><span>Icons</span></a></li>
-            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/charts']"
-                    href="javascript:void(0)"><i class="icon-bar-chart"></i><span>Charts</span></a></li>
+            <li class="g_heading">Elements</li>
+           
             <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a
                     [routerLink]="['/formelement']" href="javascript:void(0)"><i
                         class="icon-layers"></i><span>Forms</span></a></li>
+
             <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/table']"
                     href="javascript:void(0)"><i class="icon-tag"></i><span>Tables</span></a></li>
-            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/widgets']"
-                    href="javascript:void(0)"><i class="icon-puzzle"></i><span>Widgets</span></a></li>
-            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/map']"
-                    href="javascript:void(0)"><i class="icon-map"></i><span>Maps</span></a></li>
+
             <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a [routerLink]="['/gallery']"
                     href="javascript:void(0)"><i class="icon-picture"></i><span>Gallery</span></a></li>
         </ul>

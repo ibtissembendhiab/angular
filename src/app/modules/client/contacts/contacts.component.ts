@@ -1,7 +1,7 @@
-import { HttpClient, HttpErrorResponse, HttpEventType, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpEventType, HttpHeaders, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
-import { of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+//import { of } from 'rxjs';
+//import { catchError, map } from 'rxjs/operators';
 import { UploadService } from 'src/app/core/services/upload.service';
 
 @Component({
@@ -18,9 +18,9 @@ export class ContactsComponent implements OnInit {
   listTab: boolean;
   gridTab: boolean;
   addnewTab: boolean;
-  
-  constructor(private service: UploadService) {
-  }
+  selectedFile: File;
+  constructor(private service: UploadService) { }
+    
   onTab(number) {
     this.listTab = false;
     this.gridTab = false;
@@ -35,11 +35,9 @@ export class ContactsComponent implements OnInit {
       this.addnewTab = true;
     }
   }
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void { }
 
-  public uploadFile(event) {
+  public uploadFile (event) {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
       this.service.uploadFile(file).subscribe(

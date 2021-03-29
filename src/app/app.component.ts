@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { filter } from 'rxjs/operators';
-import { ChatComponent } from './modules/client/chat/chat.component';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
