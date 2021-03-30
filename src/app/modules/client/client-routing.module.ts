@@ -33,135 +33,135 @@ const routes: Routes = [
   {
     path: 'hr',
     component: HRMSComponent,
-    data: { title: ':: Epic :: Home' }
+    data: { title: 'Home' }
   },
   {
     path: 'hr-dashboard',
     component: HrDashboardComponent,
-    data: { title: ':: Epic :: Home' }
+    data: { title: 'Home' }
   },
   {
     path: 'hr-users',
     component: HrUsersComponent,
-    data: { title: ':: Epic :: HR Users' }
+    data: { title: 'Users' }
   },
   {
     path: 'hr-departments',
     component: HrDepartmentsComponent,
-    data: { title: ':: Epic :: HR Departments' }
+    data: { title: 'Groupes' }
   },
   {
     path: 'hr-activities',
     component: HrActivitiesComponent,
-    data: { title: ':: Epic :: HR Activities' }
+    data: { title: 'Activities' }
   },
   {
     path: 'search',
     component: SearchComponent,
-    data: { title: ':: Epic :: Search' }
+    data: { title: ' Search' }
   },
   
   {
     path: 'contacts',
     component: ContactsComponent,
-    data: { title: ':: Epic :: Contacts' }
+    data: { title: 'Contacts' }
   },
   
   {
     path: 'filemanager',
     component: FilemanagerComponent,
-    data: { title: ':: Epic ::  Filemanager' }
+    data: { title: 'Filemanager' }
   },
   {
     path: 'project',
     component: ProjectComponent,
-    data: { title: ':: Epic :: Project' }
+    data: { title: ' Project' }
   },
   {
     path: 'project-deashboard',
     component: PrDashboardComponent,
-    data: { title: ':: Epic :: Project Dashboard' }
+    data: { title: 'Project Dashboard' }
   },
   {
     path: 'project-list',
     component: PrProjectlistComponent,
-    data: { title: ':: Epic :: Project List' }
+    data: { title: ' Project List' }
   },
   {
     path: 'project-taskboard',
     component: PrTaskboardComponent,
-    data: { title: ':: Epic :: Project Taskboard' }
+    data: { title: 'Project Taskboard' }
   },
   {
     path: 'project-ticketlist',
     component: PrTicketlistComponent,
-    data: { title: ':: Epic :: Project Ticketlist' }
+    data: { title: ' Project Ticketlist' }
   },
   {
     path: 'project-ticketdetails',
     component: PrTicketdetailsComponent,
-    data: { title: ':: Epic :: Project Ticketdetails' }
+    data: { title: 'Project Ticketdetails' }
   },
   {
     path: 'project-clients',
     component: PrClientsComponent,
-    data: { title: ':: Epic :: Project Clients' }
+    data: { title: ' Project Clients' }
   },
   {
     path: 'project-todo-list',
     component: PrTodolistComponent,
-    data: { title: ':: Epic :: Project Todolist' }
+    data: { title: ' Project Todolist' }
   },
  
   {
     path: 'icon-fontawesome',
     component: IconFontawesomeComponent,
-    data: { title: ':: Epic :: Icon Fontawesome' }
+    data: { title: 'Icon Fontawesome' }
   },
   {
     path: 'icon-feather',
     component: IconFeatherComponent,
-    data: { title: ':: Epic :: Icon Feather' }
+    data: { title: 'Icon Feather' }
   },
   {
     path: 'icon-lines',
     component: IconLinesComponent,
-    data: { title: ':: Epic :: Icon Lines' }
+    data: { title: 'Icon Lines' }
   },
   {
     path: 'icon-flags',
     component: IconFlagsComponent,
-    data: { title: ':: Epic :: Icon Flags' }
+    data: { title: ' Icon Flags' }
   },
   {
     path: 'icon-payments',
     component: IconPaymentsComponent,
-    data: { title: ':: Epic :: Icon Payments' }
+    data: { title: ' Icon Payments' }
   },
   {
     path: 'table',
     component: TablesComponent,
-    data: { title: ':: Epic :: Tables' }
+    data: { title: 'Tables' }
   },
   {
     path: 'gallery',
     component: GalleryComponent,
-    data: { title: ':: Epic :: Gallery' }
+    data: { title: ' Gallery' }
   },
   {
     path: 'formelement',
     component: FormElementComponent,
-    data: { title: ':: Epic :: Forms' }
+    data: { title: ' Forms' }
   },
   {
     path: 'settings',
     component: SettingsComponent,
-    data: { title: ':: Epic :: Settings' }
+    data: { title: 'Settings' }
   },
   {
     path: 'profile',
     component: ProfileComponent,
-    data: { title: ':: Epic :: Profile' }
+    data: { title: ' Profile' }
   }
   
   

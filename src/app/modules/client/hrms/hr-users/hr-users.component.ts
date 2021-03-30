@@ -28,9 +28,11 @@ export class HrUsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group
-    ({
+    ({FirstName:['', Validators.required],
+      LastName: ['', Validators.required],
       UserName: ['', Validators.required],
       Email:    ['', Validators.required],
+      UserRole:  ['', Validators.required],
       Password: ['', [Validators.required, Validators.minLength(6)]]
     })
   }
@@ -51,7 +53,7 @@ export class HrUsersComponent implements OnInit {
         .pipe(first())
         .subscribe(
             data => {
-                this.router.navigate(['../login'], { relativeTo: this.route });
+                this.router.navigate(['../home'], { relativeTo: this.route });
             },
             error => {
                 this.loading = false;

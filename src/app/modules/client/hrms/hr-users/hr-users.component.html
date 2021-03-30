@@ -8,12 +8,12 @@
                 <ul class="nav nav-tabs page-header-tab">
                     <li class="nav-item"><a class="nav-link active" id="user-tab" data-toggle="tab"
                             href="javascript:void(0)" (click)="onTab('1')" [ngClass]="{'active': chatTab}">List</a></li>
-                    <li class="nav-item"><a class="nav-link" id="user-tab" data-toggle="tab" href="javascript:void(0)"
-                            (click)="onTab('2')" [ngClass]="{'active': contactTab}">Add
-                            New</a></li>
+                   
                 </ul>
                 <div class="header-action">
-                    <button type="button" class="btn btn-primary"><i class="fe fe-plus mr-2"></i>Add</button>
+                  <!-- <button type="button" class="btn btn-primary"><i class="fe fe-plus mr-2"></i>Add</button>--> 
+                  <a class="nav-link" id="user-tab" data-toggle="tab" href="javascript:void(0)"
+                  (click)="onTab('2')" [ngClass]="{'active': contactTab}"> Add New </a>
                 </div>
             </div>
         </div>
@@ -250,13 +250,11 @@
                         <div class="card-body">
                             <div class="row clearfix">
                                 <div class="col-lg-12 col-md-12 col-sm-12">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Employee ID *">
-                                    </div>
+                                    
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="First Name *">
+                                        <input type="text" class="form-control" placeholder="First Name ">
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6 col-sm-12">
@@ -264,43 +262,36 @@
                                         <input type="text" class="form-control" placeholder="Last Name">
                                     </div>
                                 </div>
-                                <div class="col-md-4 col-sm-12">
+                                <div class=" col-lg-6 col-md-4 col-sm-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Email ID *">
+                                        <input type="text" class="form-control" placeholder="Email">
                                     </div>
                                 </div>
-                                <div class="col-md-4 col-sm-12">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Mobile No">
+                                
+                               
+                                <div class="col-lg-6 col-md-4 col-sm-12">
+                                     <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="User name ">
                                     </div>
                                 </div>
-                                <div class="col-md-4 col-sm-12">
-                                    <div class="form-group">
-                                        <select class="form-control show-tick">
-                                            <option>Select Role Type</option>
-                                            <option>Super Admin</option>
-                                            <option>Admin</option>
-                                            <option>Employee</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-12">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Username *">
-                                    </div>
-                                </div>
-                                <div class="col-md-4 col-sm-12">
+                                <div class="col-lg-6 col-md-4 col-sm-12">
                                     <div class="form-group">
                                         <input type="text" class="form-control" placeholder="Password">
                                     </div>
                                 </div>
-                                <div class="col-md-4 col-sm-12">
+                                <div class="col-lg-6 col-md-4 col-sm-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Confirm Password">
+                                         <select formControlName="UserRole" class="form-control show-tick">
+                                            <option>Select Role </option>
+                                            <option value="Admin" >Admin       </option>
+                                            <option value="employee ">Employee    </option>
+                                        </select>   
                                     </div>
                                 </div>
-
-                                <div class="col-12">
+                                <div class="form-footer">
+                                  <button type="submit" class="btn btn-primary btn-block" [disabled]="!service.formModel.valid">Create new account</button> 
+                                </div>
+                              <!--  <div class="col-12">
                                     <hr class="mt-4">
                                     <h6>Module Permission</h6>
                                     <div class="table-responsive">
@@ -415,7 +406,7 @@
                                     </div>
                                     <button type="button" class="btn btn-primary">Add</button>
                                     <button type="button" class="btn btn-secondary ml-1" data-dismiss="modal">CLOSE</button>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -423,5 +414,5 @@
             </div>
         </div>
     </div>
-    <app-footer></app-footer>
+     <!--<app-footer></app-footer>-->
 </div>
