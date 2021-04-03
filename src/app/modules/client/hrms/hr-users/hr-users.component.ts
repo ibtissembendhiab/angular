@@ -28,23 +28,23 @@ export class HrUsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group
-    ({FirstName:['', Validators.required],
-      LastName: ['', Validators.required],
-      UserName: ['', Validators.required],
-      Email:    ['', Validators.required],
-      UserRole:  ['', Validators.required],
-      Password: ['', [Validators.required, Validators.minLength(6)]]
+    ({  UserName: ['', Validators.required],
+        Email:    ['', Validators.required,Validators.email],
+        UserRole: ['', Validators.required],
+        Password: ['', [Validators.required, Validators.minLength(6)]]
     })
+  }
+  onReset() {
+    this.submitted = false;
+    this.registerForm.reset();
   }
 
   get f() { return this.registerForm.controls;}
 
-
   //registration 
   onSubmit() {
     this.submitted = true;  
-
-    // stop here if form is invalid
+    
     if (this.registerForm.invalid) {
         return;
     }
@@ -71,6 +71,8 @@ export class HrUsersComponent implements OnInit {
     }
   }
 
+ 
+
   sweettalert7() {
     Swal.fire({
       title: 'Are you sure?',
@@ -85,14 +87,14 @@ export class HrUsersComponent implements OnInit {
       if (result.value) {
         Swal.fire(
           'Deleted!',
-          'The user has been deleted.',
+          'This user has been deleted.',
           'success'
         )
 
       } else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire(
           'Cancelled',
-          'Your user is safe :)',
+          'This user is safe :)',
           'error'
         )
       }

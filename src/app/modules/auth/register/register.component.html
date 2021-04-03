@@ -7,7 +7,7 @@
             </div>
             <div class="card-body">
                 <div class="card-title">Create new account</div>
-             <form [formGroup]="registerForm"  (ngSubmit)="onSubmit()">
+             <form [formGroup]="registerForm" class="register" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label class="form-label">User Name</label>
                     <input type="text" class="form-control"  name="UserName" formControlName="UserName" placeholder="Enter username" [ngClass]="{ 'is-invalid': submitted && f.UserName.errors }">

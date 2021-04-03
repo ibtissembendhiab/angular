@@ -35,6 +35,12 @@ export class ContactsComponent implements OnInit {
       this.addnewTab = true;
     }
   }
+
+
+  onReset() {
+   
+  }
+
   ngOnInit(): void { }
 
   public uploadFile (event) {
@@ -91,7 +97,7 @@ export class ContactsComponent implements OnInit {
   ngOnInit() {
   }*/
 
-  /*uploadFile(file) {  
+ /* uploadFile(file) {  
     const formData = new FormData();  
     formData.append('file', file.data);  
     file.inProgress = true;  
@@ -115,12 +121,12 @@ export class ContactsComponent implements OnInit {
       });  
   } 
 
- /* private uploadFiles() {  
+  private uploadFiles() {  
     this.fileUpload.nativeElement.value = '';  
     this.files.forEach(file => {  
       this.uploadFile(file);  
     });  
-} */
+}   */
 
 
 /*onClick() {  
@@ -169,7 +175,7 @@ export class ContactsComponent implements OnInit {
     else if (number == '3') {
       this.addnewTab = true;
     }
-  }
+  } 
   ngOnInit(): void {
   }
   sweettalert7() {

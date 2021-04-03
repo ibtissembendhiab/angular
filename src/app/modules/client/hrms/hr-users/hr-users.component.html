@@ -7,11 +7,16 @@
             <div class="d-flex justify-content-between align-items-center">
                 <ul class="nav nav-tabs page-header-tab">
                     <li class="nav-item"><a class="nav-link active" id="user-tab" data-toggle="tab"
-                            href="javascript:void(0)" (click)="onTab('1')" [ngClass]="{'active': chatTab}">List</a></li>
-                   
+                            href="javascript:void(0)" (click)="onTab('1')" [ngClass]="{'active': chatTab}">Users List</a>
+                    </li>
                 </ul>
+                <!--Button el jdid
                 <div class="header-action">
-                  <!-- <button type="button" class="btn btn-primary"><i class="fe fe-plus mr-2"></i>Add</button>--> 
+                    <button type="button" class="btn btn-primary" (click)="AddModal(template)" data-toggle="modal"
+                        data-target="#exampleModal"><i class="fe fe-plus mr-2"></i>Add New</button>
+                </div>-->
+                <!--Button el 9dim-->
+               <div class="header-action">
                   <a class="nav-link" id="user-tab" data-toggle="tab" href="javascript:void(0)"
                   (click)="onTab('2')" [ngClass]="{'active': contactTab}"> Add New </a>
                 </div>
@@ -24,14 +29,15 @@
                 <div class="tab-pane fade" [ngClass]="{'show active': chatTab}" id="user-list" role="tabpanel">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">User List</h3>
+                            <h3 class="card-title">Users List</h3>
                             <div class="card-options">
                                 <form>
                                     <div class="input-group">
                                         <input type="text" class="form-control form-control-sm"
                                             placeholder="Search something..." name="s">
                                         <span class="input-group-btn ml-2"><button class="btn btn-sm btn-default"
-                                                type="submit"><span class="fe fe-search"></span></button></span>
+                                                type="submit"><span class="fe fe-search">
+                                                </span></button></span>
                                     </div>
                                 </form>
                             </div>
@@ -41,376 +47,73 @@
                                 <table class="table table-striped table-hover table-vcenter text-nowrap mb-0">
                                     <thead>
                                         <tr>
-                                            <th class="w60">Name</th>
+                                            <th class="w60">User Name</th>
                                             <th></th>
                                             <th></th>
-                                            <th>Created Date</th>
+                                            <th>Email</th>
                                             <th>Role</th>
                                             <th class="w100">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    
                                         <tr>
-                                            <td class="width45">
-                                                <span class="avatar avatar-blue" data-toggle="tooltip"
-                                                    data-placement="top" title="" data-original-title="Avatar Name"
-                                                    tooltip="Avatar Name">NG</span>
-                                            </td>
-                                            <td>
-                                                <h6 class="mb-0">Marshall Nichols</h6>
-                                                <span>marshall-n@gmail.com</span>
-                                            </td>
-                                            <td><span class="tag tag-danger">Super Admin</span></td>
-                                            
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <img src="../assets/images/xs/avatar1.jpg" data-toggle="tooltip"
-                                                    data-placement="top" title="" alt="Avatar" tooltip="Avatar Name"
-                                                    class="avatar" data-original-title="Avatar Name">
-                                            </td>
-                                            <td>
-                                                <h6 class="mb-0">Susie Willis</h6>
-                                                <span>sussie-w@gmail.com</span>
-                                            </td>
-                                            <td><span class="tag tag-info">Admin</span></td>
-                                            <td>28 Jun, 2015</td>
-                                            <td>Team Lead</td>
+                                          
                                             <td>
                                                 <button type="button" class="btn btn-icon" title="Edit"><i
                                                         class="fa fa-edit"></i></button>
                                                 <button type="button" (click)="sweettalert7()"
                                                     class="btn btn-icon js-sweetalert" title="Delete"
-                                                    data-type="confirm"><i
-                                                        class="fa fa-trash-o text-danger"></i></button>
+                                                    data-type="confirm">
+                                                    <i  class="fa fa-trash-o text-danger"> </i>
+                                                </button>
                                             </td>
                                         </tr>
-                                     <!--   <tr>
-                                            <td>
-                                                <img src="../assets/images/xs/avatar2.jpg" data-toggle="tooltip"
-                                                    data-placement="top" title="" alt="Avatar" class="avatar"
-                                                    data-original-title="Avatar Name" tooltip="Avatar Name">
-                                            </td>
-                                            <td>
-                                                <h6 class="mb-0">Debra Stewart</h6>
-                                                <span>debra@gmail.com</span>
-                                            </td>
-                                            <td><span class="tag tag-default">Employee</span></td>
-                                            <td>21 July, 2015</td>
-                                            <td>Team Lead</td>
-                                            <td>
-                                                <button type="button" class="btn btn-icon" title="Edit"><i
-                                                        class="fa fa-edit"></i></button>
-                                                <button type="button" (click)="sweettalert7()"
-                                                    class="btn btn-icon js-sweetalert" title="Delete"
-                                                    data-type="confirm"><i
-                                                        class="fa fa-trash-o text-danger"></i></button>
-                                            </td>
-                                        </tr>  -->
-                                        <tr>
-                                            <td>
-                                                <span class="avatar avatar-green" data-toggle="tooltip"
-                                                    data-placement="top" title="" tooltip="Avatar Name"
-                                                    data-original-title="Avatar Name">KH</span>
-                                            </td>
-                                            <td>
-                                                <h6 class="mb-0">Erin Gonzales</h6>
-                                                <span>Erinonzales@gmail.com</span>
-                                            </td>
-                                            <td><span class="tag tag-default">Employee</span></td>
-                                            <td>21 July, 2015</td>
-                                            <td>Web Developer</td>
-                                            <td>
-                                                <button type="button" class="btn btn-icon" title="Edit"><i
-                                                        class="fa fa-edit"></i></button>
-                                                <button type="button" (click)="sweettalert7()"
-                                                    class="btn btn-icon js-sweetalert" title="Delete"
-                                                    data-type="confirm"><i
-                                                        class="fa fa-trash-o text-danger"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <img src="../assets/images/xs/avatar3.jpg" data-toggle="tooltip"
-                                                    data-placement="top" title="" alt="Avatar" tooltip="Avatar Name"
-                                                    class="avatar" data-original-title="Avatar Name">
-                                            </td>
-                                            <td>
-                                                <h6 class="mb-0">Susie Willis</h6>
-                                                <span>sussie-w@gmail.com</span>
-                                            </td>
-                                            <td><span class="tag tag-info">Admin</span></td>
-                                            <td>28 Jun, 2015</td>
-                                            <td>Team Lead</td>
-                                            <td>
-                                                <button type="button" class="btn btn-icon" title="Edit"><i
-                                                        class="fa fa-edit"></i></button>
-                                                <button type="button" (click)="sweettalert7()"
-                                                    class="btn btn-icon js-sweetalert" title="Delete"
-                                                    data-type="confirm"><i
-                                                        class="fa fa-trash-o text-danger"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <img src="../assets/images/xs/avatar4.jpg" tooltip="Avatar Name"
-                                                    data-toggle="tooltip" data-placement="top" title="" alt="Avatar"
-                                                    class="avatar" data-original-title="Avatar Name">
-                                            </td>
-                                            <td>
-                                                <h6 class="mb-0">Debra Stewart</h6>
-                                                <span>debra@gmail.com</span>
-                                            </td>
-                                            <td><span class="tag tag-default">Employee</span></td>
-                                            <td>21 July, 2015</td>
-                                            <td>Team Lead</td>
-                                            <td>
-                                                <button type="button" class="btn btn-icon" title="Edit"><i
-                                                        class="fa fa-edit"></i></button>
-                                                <button type="button" (click)="sweettalert7()"
-                                                    class="btn btn-icon js-sweetalert" title="Delete"
-                                                    data-type="confirm"><i
-                                                        class="fa fa-trash-o text-danger"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <img src="../assets/images/xs/avatar5.jpg" tooltip="Avatar Name"
-                                                    data-toggle="tooltip" data-placement="top" title="" alt="Avatar"
-                                                    class="avatar" data-original-title="Avatar Name">
-                                            </td>
-                                            <td>
-                                                <h6 class="mb-0">Erin Gonzales</h6>
-                                                <span>Erinonzales@gmail.com</span>
-                                            </td>
-                                            <td><span class="tag tag-default">Employee</span></td>
-                                            <td>21 July, 2016</td>
-                                            <td>Web Developer</td>
-                                            <td>
-                                                <button type="button" class="btn btn-icon" title="Edit"><i
-                                                        class="fa fa-edit"></i></button>
-                                                <button type="button" (click)="sweettalert7()"
-                                                    class="btn btn-icon js-sweetalert" title="Delete"
-                                                    data-type="confirm"><i
-                                                        class="fa fa-trash-o text-danger"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <img src="../assets/images/xs/avatar6.jpg" tooltip="Avatar Name"
-                                                    data-toggle="tooltip" data-placement="top" title="" alt="Avatar"
-                                                    class="avatar" data-original-title="Avatar Name">
-                                            </td>
-                                            <td>
-                                                <h6 class="mb-0">Ava Alexander</h6>
-                                                <span>alexander@gmail.com</span>
-                                            </td>
-                                            <td><span class="tag tag-success">HR Admin</span></td>
-                                            <td>21 July, 2016</td>
-                                            <td>HR</td>
-                                            <td>
-                                                <button type="button" class="btn btn-icon" title="Edit"><i
-                                                        class="fa fa-edit"></i></button>
-                                                <button type="button" (click)="sweettalert7()"
-                                                    class="btn btn-icon js-sweetalert" title="Delete"
-                                                    data-type="confirm"><i
-                                                        class="fa fa-trash-o text-danger"></i></button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <span class="avatar avatar-green" data-toggle="tooltip"
-                                                    data-placement="top" title="" data-original-title="Avatar Name"
-                                                    tooltip="Avatar Name">KH</span>
-                                            </td>
-                                            <td>
-                                                <h6 class="mb-0">Ava Alexander</h6>
-                                                <span>alexander@gmail.com</span>
-                                            </td>
-                                            <td><span class="tag tag-success">HR Admin</span></td>
-                                            <td>21 July, 2019</td>
-                                            <td>HR</td>
-                                            <td>
-                                                <button type="button" class="btn btn-icon" title="Edit"><i
-                                                        class="fa fa-edit"></i></button>
-                                                <button type="button" (click)="sweettalert7()"
-                                                    class="btn btn-icon js-sweetalert" title="Delete"
-                                                    data-type="confirm"><i
-                                                        class="fa fa-trash-o text-danger"></i></button>
-                                            </td>
-                                        </tr>
+                                    
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                    </div>
+                    </div> 
                 </div>
+
+              
+           <!--   formulaire el 3adi taa el registration : -->
                 <div class="tab-pane fade" [ngClass]="{'show active': contactTab}" id="user-add" role="tabpanel">
-                    <div class="card">
+                    <div class="card cardCollapsible">
                         <div class="card-body">
                             <div class="row clearfix">
-                                <div class="col-lg-12 col-md-12 col-sm-12">
-                                    
-                                </div>
-                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                <form [formGroup]="registerForm"  (ngSubmit)="onSubmit()">
+
+                                <div class=" col-lg-15 col-md-15 col-sm-12">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="First Name ">
+                                        <label class="form-label">Email</label>
+                                        <input type="text" class="form-control" formControlName="Email"  name="Email" placeholder="Enter Email"[ngClass]="{ 'is-invalid': submitted && f.Email.errors }">
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-12">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Last Name">
-                                    </div>
-                                </div>
-                                <div class=" col-lg-6 col-md-4 col-sm-12">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Email">
-                                    </div>
-                                </div>
-                                
-                               
-                                <div class="col-lg-6 col-md-4 col-sm-12">
+
+                                <div class=" col-lg-30 col-md-15 col-sm-12">
                                      <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="User name ">
+                                         <label class="form-label">User Name</label>
+                                        <input type="text" class="form-control" FormControlName="UserName" name="UserName" placeholder="Enter User name ">
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-4 col-sm-12">
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Password">
-                                    </div>
+                               
+                                <div class=" col-lg-60 col-md-60 col-sm-12">
+                                <div class="form-group">
+                                    <label class="form-label">Password</label>
+                                    <input type="password" class="form-control" formControlName="Password" name="Password" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.Password.errors }">
                                 </div>
-                                <div class="col-lg-6 col-md-4 col-sm-12">
-                                    <div class="form-group">
-                                         <select formControlName="UserRole" class="form-control show-tick">
-                                            <option>Select Role </option>
-                                            <option value="Admin" >Admin       </option>
-                                            <option value="employee ">Employee    </option>
-                                        </select>   
-                                    </div>
-                                </div>
+                                </div> 
                                 <div class="form-footer">
                                   <button type="submit" class="btn btn-primary btn-block" [disabled]="!service.formModel.valid">Create new account</button> 
+                                  <button class="btn btn-primary btn-block" type="reset" (click)="onReset()">Cancel</button>
                                 </div>
-                              <!--  <div class="col-12">
-                                    <hr class="mt-4">
-                                    <h6>Module Permission</h6>
-                                    <div class="table-responsive">
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th></th>
-                                                    <th>Read</th>
-                                                    <th>Write</th>
-                                                    <th>Delete</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>Super Admin</td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input"
-                                                                name="example-checkbox1" value="option1" checked="">
-                                                            <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input"
-                                                                name="example-checkbox1" value="option1" checked="">
-                                                            <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input"
-                                                                name="example-checkbox1" value="option1" checked="">
-                                                            <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Admin</td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input"
-                                                                name="example-checkbox1" value="option1" checked="">
-                                                            <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input"
-                                                                name="example-checkbox1" value="option1">
-                                                            <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input"
-                                                                name="example-checkbox1" value="option1">
-                                                            <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Employee</td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input"
-                                                                name="example-checkbox1" value="option1" checked="">
-                                                            <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input"
-                                                                name="example-checkbox1" value="option1">
-                                                            <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input"
-                                                                name="example-checkbox1" value="option1">
-                                                            <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>HR Admin</td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input"
-                                                                name="example-checkbox1" value="option1" checked="">
-                                                            <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input"
-                                                                name="example-checkbox1" value="option1" checked="">
-                                                            <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                    <td>
-                                                        <label class="custom-control custom-checkbox">
-                                                            <input type="checkbox" class="custom-control-input"
-                                                                name="example-checkbox1" value="option1" checked="">
-                                                            <span class="custom-control-label">&nbsp;</span>
-                                                        </label>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <button type="button" class="btn btn-primary">Add</button>
-                                    <button type="button" class="btn btn-secondary ml-1" data-dismiss="modal">CLOSE</button>
-                                </div> -->
-                            </div>
+                            </form>
+                          </div>
                         </div>
                     </div>
-                </div>
+                </div> 
             </div>
         </div>
     </div>

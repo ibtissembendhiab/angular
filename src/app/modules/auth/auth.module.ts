@@ -5,8 +5,6 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { RegisterComponent } from './register/register.component';
-import { ErrorPageComponent } from './error-page/error-page.component';
-import { ErrorPage2Component } from './error-page2/error-page2.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 @NgModule({
@@ -17,7 +15,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     FormsModule, 
     ReactiveFormsModule
   ],
-  declarations: [AuthRoutingModule.components, LoginComponent, ForgotPasswordComponent, RegisterComponent, ErrorPageComponent, ErrorPage2Component],
+  declarations: [AuthRoutingModule.components, LoginComponent, ForgotPasswordComponent, RegisterComponent],
   providers: []
 })
 export class AuthModule { }

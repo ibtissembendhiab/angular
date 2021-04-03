@@ -13,7 +13,7 @@ export class SignupService {
  
   formModel = this.fb.group({
     UserName: [Validators.required],
-    Email: [Validators.email],
+    Email:    [Validators.email],
     Password: [[Validators.required, Validators.minLength(4)]],
   })
 
