@@ -125,55 +125,55 @@
                     </div>
                 </ng-template>
 
-           <!--   formulaire el 3adi taa el registration : -->
+           <!--   formulaire registration : -->
                 <div class="tab-pane fade" [ngClass]="{'show active': contactTab}" id="user-add" role="tabpanel">
                     <div class="card cardCollapsible">
                         <div class="card-body">
                             <div class="row clearfix">
-                                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">  <!--(ngSubmit)="onSubmit()"-->
+                                <form [formGroup]="registerForm" class="register" (ngSubmit)="onSubmit()">  <!--(ngSubmit)="onSubmit()"-->
 
                                     <div class=" col-lg-30 col-md-15 col-sm-12">
                                         <div class="form-group">
-                                            <label class="form-label">First Name</label>
-                                           <input #FirstName type="text" class="form-control" FormControlName="FirstName" name="FirstName" placeholder="Enter First name ">
+                                            <label class="form-label"  for="FirstName">First Name</label>
+                                           <input  type="text" class="form-control" FormControlName="FirstName" placeholder="Enter First name ">
                                        </div>
                                    </div>
                                    <div class=" col-lg-30 col-md-15 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Last Name</label>
-                                       <input #LastName type="text" class="form-control" name="LastName" FormControlName="LastName" placeholder="Enter Last name ">
+                                        <label class="form-label" for="LastName">Last Name</label>
+                                       <input type="text" class="form-control"  FormControlName="LastName" placeholder="Enter Last name ">
                                    </div>
                                </div>
                                 <div class=" col-lg-15 col-md-15 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Email</label>
-                                        <input #Email type="text" class="form-control" formControlName="Email"  name="Email" placeholder="Enter Email"[ngClass]="{ 'is-invalid': submitted && f.Email.errors }">
+                                        <label class="form-label" for="Email">Email</label>
+                                        <input  type="text" class="form-control" formControlName="Email"  placeholder="Enter Email"[ngClass]="{ 'is-invalid': submitted && f.Email.errors }">
                                     </div>
                                 </div>
 
                                 <div class=" col-lg-30 col-md-15 col-sm-12">
                                      <div class="form-group">
-                                         <label class="form-label">User Name</label>
-                                        <input #UserName type="text" class="form-control" FormControlName="UserName" name="UserName" placeholder="Enter User name ">
+                                         <label class="form-label" for="UserName">User Name</label>
+                                        <input  type="text" class="form-control" FormControlName="UserName"  placeholder="Enter User name ">
                                     </div>
                                 </div>
                                
                                 <div class=" col-lg-60 col-md-60 col-sm-12">
                                   <div class="form-group">
-                                       <label class="form-label">Password</label>
-                                       <input #Password type="password" class="form-control" formControlName="Password" name="Password" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.Password.errors }">
+                                       <label class="form-label" for="Password">Password</label>
+                                      <input  type="password" class="form-control" formControlName="Password"  placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.Password.errors }">
                                     </div>
                                 </div> 
 
                                 <div class=" col-lg-30 col-md-15 col-sm-12">
                                     <div class="form-group">
-                                        <label class="form-label">Role</label>
-                                       <input #Role type="text" class="form-control" FormControlName="Role" name="Role" placeholder="Enter Role (Admin/Employee)">
+                                        <label class="form-label"for="Role">Role</label>
+                                       <input type="text" class="form-control" FormControlName="Role" placeholder="Enter Role (Admin/Employee)">
                                    </div>
                                </div>
                               
                                 <div class="form-footer">
-                                  <button type="submit" class="btn btn-primary btn-block" [disabled]="!service.formModel.valid">Create new account</button> 
+                                  <button type="submit" class="btn btn-primary btn-block" [disabled]="loading" >Create new account</button> 
                                   <button class="btn btn-primary btn-block" type="reset" (click)="onReset()">Cancel</button>
                                 </div>
                             </form>
