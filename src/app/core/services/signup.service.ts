@@ -12,9 +12,12 @@ export class SignupService {
   readonly BaseURI = 'https://localhost:44308/api/User';
  
   formModel = this.fb.group({
+    FirstName: [Validators.required],
+    LastName: [Validators.required],
     UserName: [Validators.required],
     Email:    [Validators.email],
     Password: [[Validators.required, Validators.minLength(4)]],
+    Role: [Validators.required]
   })
 
   

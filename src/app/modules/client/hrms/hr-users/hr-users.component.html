@@ -57,12 +57,16 @@
                                     </thead>
                                     <tbody>
                                     
-                                        <tr>
+                               
+                                       <tr>
                                           
                                             <td>
-                                                <button type="button" class="btn btn-icon" title="Edit"><i
-                                                        class="fa fa-edit"></i></button>
-                                                <button type="button" (click)="sweettalert7()"
+                                                <button type="button" 
+                                                       class="btn btn-icon" title="Edit" (click)="AddModal(template)" data-type="confirm">
+                                                       <i class="fa fa-edit"></i></button>
+                                               
+                                               
+                                                    <button type="button" (click)="sweettalert7()"
                                                     class="btn btn-icon js-sweetalert" title="Delete"
                                                     data-type="confirm">
                                                     <i  class="fa fa-trash-o text-danger"> </i>
@@ -77,34 +81,97 @@
                     </div> 
                 </div>
 
-              
+                <ng-template #template>
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Update User</h5>
+                        <button type="button" (click)="modalRef.hide()" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">×</span></button>
+                    </div>
+                
+                    <div class="modal-body">
+                        <div class="row clearfix">
+                            <div class="col-md-12">
+                              
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="First Name">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="Last Name">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="User Name">
+                                </div>
+                            </div> 
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="email" class="form-control" placeholder="Email">
+                                </div>
+                            </div> 
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input type="password" class="form-control" placeholder="Password">
+                                </div>
+                            </div> 
+                        </div>
+                   </div>
+                
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </ng-template>
+
            <!--   formulaire el 3adi taa el registration : -->
                 <div class="tab-pane fade" [ngClass]="{'show active': contactTab}" id="user-add" role="tabpanel">
                     <div class="card cardCollapsible">
                         <div class="card-body">
                             <div class="row clearfix">
-                                <form [formGroup]="registerForm"  (ngSubmit)="onSubmit()">
+                                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">  <!--(ngSubmit)="onSubmit()"-->
 
+                                    <div class=" col-lg-30 col-md-15 col-sm-12">
+                                        <div class="form-group">
+                                            <label class="form-label">First Name</label>
+                                           <input #FirstName type="text" class="form-control" FormControlName="FirstName" name="FirstName" placeholder="Enter First name ">
+                                       </div>
+                                   </div>
+                                   <div class=" col-lg-30 col-md-15 col-sm-12">
+                                    <div class="form-group">
+                                        <label class="form-label">Last Name</label>
+                                       <input #LastName type="text" class="form-control" name="LastName" FormControlName="LastName" placeholder="Enter Last name ">
+                                   </div>
+                               </div>
                                 <div class=" col-lg-15 col-md-15 col-sm-12">
                                     <div class="form-group">
                                         <label class="form-label">Email</label>
-                                        <input type="text" class="form-control" formControlName="Email"  name="Email" placeholder="Enter Email"[ngClass]="{ 'is-invalid': submitted && f.Email.errors }">
+                                        <input #Email type="text" class="form-control" formControlName="Email"  name="Email" placeholder="Enter Email"[ngClass]="{ 'is-invalid': submitted && f.Email.errors }">
                                     </div>
                                 </div>
 
                                 <div class=" col-lg-30 col-md-15 col-sm-12">
                                      <div class="form-group">
                                          <label class="form-label">User Name</label>
-                                        <input type="text" class="form-control" FormControlName="UserName" name="UserName" placeholder="Enter User name ">
+                                        <input #UserName type="text" class="form-control" FormControlName="UserName" name="UserName" placeholder="Enter User name ">
                                     </div>
                                 </div>
                                
                                 <div class=" col-lg-60 col-md-60 col-sm-12">
-                                <div class="form-group">
-                                    <label class="form-label">Password</label>
-                                    <input type="password" class="form-control" formControlName="Password" name="Password" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.Password.errors }">
-                                </div>
+                                  <div class="form-group">
+                                       <label class="form-label">Password</label>
+                                       <input #Password type="password" class="form-control" formControlName="Password" name="Password" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.Password.errors }">
+                                    </div>
                                 </div> 
+
+                                <div class=" col-lg-30 col-md-15 col-sm-12">
+                                    <div class="form-group">
+                                        <label class="form-label">Role</label>
+                                       <input #Role type="text" class="form-control" FormControlName="Role" name="Role" placeholder="Enter Role (Admin/Employee)">
+                                   </div>
+                               </div>
+                              
                                 <div class="form-footer">
                                   <button type="submit" class="btn btn-primary btn-block" [disabled]="!service.formModel.valid">Create new account</button> 
                                   <button class="btn btn-primary btn-block" type="reset" (click)="onReset()">Cancel</button>

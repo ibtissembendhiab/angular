@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import { first } from 'rxjs/operators';
 import { SignupService } from 'src/app/core/services/signup.service';
+
 import Swal from 'sweetalert2'
 @Component({
   selector: 'app-hr-users',
   templateUrl: './hr-users.component.html',
   styleUrls: ['./hr-users.component.scss']
 })
+
 export class HrUsersComponent implements OnInit {
 
   registerForm: FormGroup;
@@ -17,23 +20,35 @@ export class HrUsersComponent implements OnInit {
   submitted = false;
   contactTab: boolean;
   chatTab: boolean = true;
+  modalRef: BsModalRef;
 
   constructor(
     public service: SignupService,
      public toastr: ToastrService, 
      private route: ActivatedRoute,
      private formBuilder: FormBuilder,
-     private router: Router
+     private router: Router,
+     private modalService: BsModalService
   ) { }
 
   ngOnInit(): void {
-    this.registerForm = this.formBuilder.group
-    ({  UserName: ['', Validators.required],
-        Email:    ['', Validators.required,Validators.email],
-        UserRole: ['', Validators.required],
-        Password: ['', [Validators.required, Validators.minLength(6)]]
-    })
+    //this.registerForm = this.formBuilder.group
+    //({  UserName: ['', [Validators.required]],
+     //   Email:    ['', [Validators.required,Validators.email]],
+      //  UserRole: ['', [Validators.required]],
+       // Password: ['', [Validators.required, Validators.minLength(6)]],
+      //  Role: ['', [Validators.required]]
+    //})
+    this.registerForm = this.formBuilder.group({
+      FirstName: new FormControl(''),
+      LastName: new FormControl(''),
+      UserName: new FormControl(''),
+      Email: new FormControl(''),
+      Password: new FormControl(''),
+      Role: new FormControl(''),
+  });
   }
+
   onReset() {
     this.submitted = false;
     this.registerForm.reset();
@@ -41,24 +56,25 @@ export class HrUsersComponent implements OnInit {
 
   get f() { return this.registerForm.controls;}
 
-  //registration 
   onSubmit() {
     this.submitted = true;  
-    
+
+    // stop here if form is invalid
     if (this.registerForm.invalid) {
         return;
     }
     this.loading = true;
-    this.service.register(this.registerForm.value)
+    this.service.register(this.registerForm.controls[''].value)
         .pipe(first())
         .subscribe(
             data => {
-                this.router.navigate(['../home'], { relativeTo: this.route });
+                this.router.navigate(['../login'], { relativeTo: this.route });
             },
             error => {
                 this.loading = false;
             });
 }
+
 
  onTab(number) {
     this.chatTab = false;
@@ -100,5 +116,15 @@ export class HrUsersComponent implements OnInit {
       }
     })
   }
+
+  AddModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(
+      template,
+      Object.assign({}, { class: 'gray modal-md' })
+    );
+  }
+
+
+  
 
 }

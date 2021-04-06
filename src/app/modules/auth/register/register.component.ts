@@ -7,7 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 
 
-@Component({
+@Component({ 
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
@@ -15,6 +15,7 @@ import { first } from 'rxjs/operators';
     { provide: CarouselConfig, useValue: { interval: 3000, noPause: true, showIndicators: false } }
   ]
 })
+
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   loading = false;
