@@ -132,20 +132,6 @@
                     <div class="card cardCollapsible">
                         <div class="card-body">
                             <div class="row clearfix">
-<<<<<<< HEAD
-                                <form [formGroup]="registerForm" class="register" (ngSubmit)="onFormSubmit()">  <!--(ngSubmit)="onSubmit()"-->
-
-                                    <div class=" col-lg-30 col-md-15 col-sm-12">
-                                        <div class="form-group">
-                                            <label class="form-label"  for="FirstName">First Name</label>
-                                           <input  type="text" class="form-control" FormControlName="FirstName" placeholder="Enter First name ">
-                                       </div>
-                                   </div>
-                                   <div class=" col-lg-30 col-md-15 col-sm-12">
-                                    <div class="form-group">
-                                        <label class="form-label" for="LastName">Last Name</label>
-                                       <input type="text" class="form-control"  FormControlName="LastName" placeholder="Enter Last name ">
-=======
                                 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">  
 
                                     <div class=" col-lg-30 col-md-15 col-sm-12">
@@ -170,15 +156,10 @@
                                         formControlName="LastName"
                                         [ngClass]="{ 'is-invalid': submitted && f.LastName.errors }"
                                       />
->>>>>>> b614d94a9fdc9e6ba2fd4d4f1d2d22598063f6f3
                                    </div>
                                </div>
                                 <div class=" col-lg-15 col-md-15 col-sm-12">
                                     <div class="form-group">
-<<<<<<< HEAD
-                                        <label class="form-label" for="Email">Email</label>
-                                        <input  type="text" class="form-control" formControlName="Email"  placeholder="Enter Email"[ngClass]="{ 'is-invalid': submitted && f.Email.errors }">
-=======
                                         <label class="form-label">Email</label>
                                         <input
                                         class=" form-control"
@@ -187,16 +168,11 @@
                                         formControlName="Email"
                                         [ngClass]="{ 'is-invalid': submitted && f.Email.errors }"
                                       />
->>>>>>> b614d94a9fdc9e6ba2fd4d4f1d2d22598063f6f3
                                     </div>
                                 </div>
 
                                 <div class=" col-lg-30 col-md-15 col-sm-12">
                                      <div class="form-group">
-<<<<<<< HEAD
-                                         <label class="form-label" for="UserName">User Name</label>
-                                        <input  type="text" class="form-control" FormControlName="UserName"  placeholder="Enter User name ">
-=======
                                          <label class="form-label">User Name</label>
                                          <input 
                                          class=" form-control"
@@ -205,17 +181,11 @@
                                          formControlName="UserName"
                                          [ngClass]="{ 'is-invalid': submitted && f.UserName.errors }"
                                        />
->>>>>>> b614d94a9fdc9e6ba2fd4d4f1d2d22598063f6f3
                                     </div>
                                 </div>
                                
                                 <div class=" col-lg-60 col-md-60 col-sm-12">
                                   <div class="form-group">
-<<<<<<< HEAD
-                                       <label class="form-label" for="Password">Password</label>
-                                      <input  type="password" class="form-control" formControlName="Password"  placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.Password.errors }">
-                                    </div>
-=======
                                        <label class="form-label">Password</label>
                                        <input
                                        class=" form-control"
@@ -227,15 +197,10 @@
                                        
                                    />
                                 </div>
->>>>>>> b614d94a9fdc9e6ba2fd4d4f1d2d22598063f6f3
                                 </div> 
 
                                 <div class=" col-lg-30 col-md-15 col-sm-12">
                                     <div class="form-group">
-<<<<<<< HEAD
-                                        <label class="form-label"for="Role">Role</label>
-                                       <input type="text" class="form-control" FormControlName="Role" placeholder="Enter Role (Admin/Employee)">
-=======
                                         <label class="form-label">Role</label>
                                         <input 
                                         class=" form-control"
@@ -244,16 +209,11 @@
                                         formControlName="Role"
                                         [ngClass]="{ 'is-invalid': submitted && f.Role.errors }"
                                       />
->>>>>>> b614d94a9fdc9e6ba2fd4d4f1d2d22598063f6f3
                                    </div>
                                </div>
                               
                                 <div class="form-footer">
-<<<<<<< HEAD
-                                  <button type="submit" class="btn btn-primary btn-block" [disabled]="loading" >Create new account</button> 
-=======
                                   <button type="submit" class="btn btn-primary btn-block" >Create new account</button>
->>>>>>> b614d94a9fdc9e6ba2fd4d4f1d2d22598063f6f3
                                   <button class="btn btn-primary btn-block" type="reset" (click)="onReset()">Cancel</button>
                                 </div>
                             </form>

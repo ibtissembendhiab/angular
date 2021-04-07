@@ -1,12 +1,10 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AlertComponent } from 'ngx-bootstrap/alert';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import { first } from 'rxjs/operators';
 import { SignupService } from 'src/app/core/services/signup.service';
-import { Register } from 'src/app/shared/models/register.model';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -70,50 +68,9 @@ export class HrUsersComponent implements OnInit {
     this.registerForm.reset();
   }
 
-  onFormSubmit()    
-  {    
-    const user = this.registerForm.value;    
-    this.Createemployee(user); 
-    }    
-  Createemployee(register:Register)    
-  {    
-  this.service.CreateUser(register).subscribe(    
-    ()=>    
-    {    
-      this.data = true;    
-      this.massage = 'Data saved Successfully';    
-      this.registerForm.reset();    
-    });    
-  }   
+  get f() {return this.registerForm.controls;}
 
-  get f() { return this.registerForm.controls;}
-
-  /*onSubmit() {
-    this.submitted = true;
-
-    // reset alerts on submit
-  //  this.alertService.clear();
-
-    // stop here if form is invalid
-    if (this.registerForm.invalid) {
-        return;
-    }
-
-    this.loading = true;
-    this.service.CreateUser(this.registerForm.value)
-        .pipe(first())
-        .subscribe(
-            data => {
-                //this.alertService.success('Registration successful', true);
-                this.router.navigate(['/login']);
-            },
-            error => {
-               // this.alertService.error(error);
-                this.loading = false;
-            });
-}*/
-
- /* onSubmit() {
+  onSubmit() {
     this.submitted = true;  
 
     // stop here if form is invalid
@@ -130,7 +87,7 @@ export class HrUsersComponent implements OnInit {
             error => {
                 this.loading = false;
             });
-}*/
+}
 
 
  onTab(number) {
