@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { HttpClient, HttpErrorResponse, HttpEventType, HttpHeaders, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 //import { of } from 'rxjs';
@@ -219,3 +220,5 @@ export class ContactsComponent implements OnInit {
   } */
 
 }
+=======
+>>>>>>> b614d94a9fdc9e6ba2fd4d4f1d2d22598063f6f3
