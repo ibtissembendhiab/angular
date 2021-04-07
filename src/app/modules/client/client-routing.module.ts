@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormElementComponent } from './form-element/form-element.component';
 import { TablesComponent } from './UI-ELEMENTS/tables/tables.component';
 import { FilemanagerComponent } from './filemanager/filemanager.component';
-import { ContactsComponent } from './contacts/contacts.component';
+//import { ContactsComponent } from './contacts/contacts.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ProfileComponent } from './profile/profile.component';
 
@@ -61,11 +61,11 @@ const routes: Routes = [
     data: { title: ' Search' }
   },
   
-  {
+ /* {
     path: 'contacts',
     component: ContactsComponent,
     data: { title: 'Contacts' }
-  },
+  },*/
   
   {
     path: 'filemanager',

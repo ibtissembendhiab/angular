@@ -15,13 +15,29 @@ import Swal from 'sweetalert2'
 
 export class HrUsersComponent implements OnInit {
 
-  registerForm: FormGroup;
   loading = false;
   submitted = false;
   contactTab: boolean;
   chatTab: boolean = true;
   modalRef: BsModalRef;
 
+  FirstName = new FormControl("",Validators.required);
+  LastName = new FormControl("",Validators.required);
+  Email = new FormControl("",[Validators.required,Validators.email]);
+  UserName = new FormControl("",Validators.required);
+  Password = new FormControl("",[Validators.required,Validators.minLength(4)]);
+  Role = new FormControl("",Validators.required);
+  
+  registerForm = new FormGroup ({
+    FirstName: new FormControl(),
+    LastName: new FormControl(),
+    Email: new FormControl(),
+    UserName : new FormControl(),
+    Password : new FormControl(),
+    Role : new FormControl(),
+
+  })
+  
   constructor(
     public service: SignupService,
      public toastr: ToastrService, 
@@ -31,24 +47,18 @@ export class HrUsersComponent implements OnInit {
      private modalService: BsModalService
   ) { }
 
-  ngOnInit(): void {
-    //this.registerForm = this.formBuilder.group
-    //({  UserName: ['', [Validators.required]],
-     //   Email:    ['', [Validators.required,Validators.email]],
-      //  UserRole: ['', [Validators.required]],
-       // Password: ['', [Validators.required, Validators.minLength(6)]],
-      //  Role: ['', [Validators.required]]
-    //})
-    this.registerForm = this.formBuilder.group({
-      FirstName: new FormControl(''),
-      LastName: new FormControl(''),
-      UserName: new FormControl(''),
-      Email: new FormControl(''),
-      Password: new FormControl(''),
-      Role: new FormControl(''),
-  });
-  }
-
+  ngOnInit(): void
+   { 
+     this.registerForm = this.formBuilder.group({
+       FirstName: this.FirstName,
+       LastName: this.LastName,
+       Email: this.Email,
+       UserName: this.UserName,
+       Password: this.Password,
+       Role : this.Role,
+     })
+   }
+  
   onReset() {
     this.submitted = false;
     this.registerForm.reset();
@@ -61,14 +71,14 @@ export class HrUsersComponent implements OnInit {
 
     // stop here if form is invalid
     if (this.registerForm.invalid) {
-        return;
+        return null;
     }
     this.loading = true;
-    this.service.register(this.registerForm.controls[''].value)
+    this.service.register(this.registerForm.value)
         .pipe(first())
         .subscribe(
-            data => {
-                this.router.navigate(['../login'], { relativeTo: this.route });
+            data => { this.toastr.success("User added");
+                this.router.navigate(['../hr-users'], { relativeTo: this.route });
             },
             error => {
                 this.loading = false;
@@ -86,8 +96,6 @@ export class HrUsersComponent implements OnInit {
       this.contactTab = true;
     }
   }
-
- 
 
   sweettalert7() {
     Swal.fire({

@@ -9,28 +9,23 @@ import { Observable } from 'rxjs';
   export class UploadService { 
   
     private API_BASE_URL = 'https://localhost:44803/api/upload';
-    folderid: any;
+    
   
     constructor(private httpClient: HttpClient) {}
   
-    public uploadFile(file: File): Observable<HttpEvent<{}>> {
-      
-      var token = localStorage.getItem('token');
-      const httpOptions = {
-        headers: new HttpHeaders().set("Authorization", "Bearer " + token),
-      };
-  
+    public uploadFile(file: Blob): Observable<HttpEvent<void>> {
       const formData = new FormData();
-      formData.set('files', file, file.name);
-      
-      const req = new HttpRequest(
+      formData.append('file',file);
+
+      return this.httpClient.request(new HttpRequest(
         'POST',
-        `${this.API_BASE_URL}`,
+        this. API_BASE_URL,
         formData,
-        httpOptions
-      );
-      return this.httpClient.request(req);
-    }
+        {
+          reportProgress: true
+        }));
+      
+  }
 
   }
 

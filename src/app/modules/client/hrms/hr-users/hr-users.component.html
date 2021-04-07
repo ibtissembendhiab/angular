@@ -61,9 +61,9 @@
                                        <tr>
                                           
                                             <td>
-                                                <button type="button" 
+                                              <!--<button type="button" 
                                                        class="btn btn-icon" title="Edit" (click)="AddModal(template)" data-type="confirm">
-                                                       <i class="fa fa-edit"></i></button>
+                                                       <i class="fa fa-edit"></i></button>--> 
                                                
                                                
                                                     <button type="button" (click)="sweettalert7()"
@@ -80,6 +80,8 @@
                         </div>
                     </div> 
                 </div>
+               <!--  
+                   Update profile pas pour l'admin
 
                 <ng-template #template>
                     <div class="modal-header">
@@ -123,57 +125,95 @@
                         <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
                         <button type="button" class="btn btn-primary">Save changes</button>
                     </div>
-                </ng-template>
+                </ng-template>  -->
 
            <!--   formulaire el 3adi taa el registration : -->
                 <div class="tab-pane fade" [ngClass]="{'show active': contactTab}" id="user-add" role="tabpanel">
                     <div class="card cardCollapsible">
                         <div class="card-body">
                             <div class="row clearfix">
-                                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">  <!--(ngSubmit)="onSubmit()"-->
+                                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">  
 
                                     <div class=" col-lg-30 col-md-15 col-sm-12">
                                         <div class="form-group">
                                             <label class="form-label">First Name</label>
-                                           <input #FirstName type="text" class="form-control" FormControlName="FirstName" name="FirstName" placeholder="Enter First name ">
-                                       </div>
+                                           <input 
+                                            class=" form-control"
+                                            placeholder="First Name"
+                                            type="text"
+                                            formControlName="FirstName"
+                                            [ngClass]="{ 'is-invalid': submitted && f.FirstName.errors }"
+                                           />
+                                        </div>
                                    </div>
                                    <div class=" col-lg-30 col-md-15 col-sm-12">
                                     <div class="form-group">
                                         <label class="form-label">Last Name</label>
-                                       <input #LastName type="text" class="form-control" name="LastName" FormControlName="LastName" placeholder="Enter Last name ">
+                                        <input 
+                                        class=" form-control"
+                                        placeholder="Last Name"
+                                        type="text"
+                                        formControlName="LastName"
+                                        [ngClass]="{ 'is-invalid': submitted && f.LastName.errors }"
+                                      />
                                    </div>
                                </div>
                                 <div class=" col-lg-15 col-md-15 col-sm-12">
                                     <div class="form-group">
                                         <label class="form-label">Email</label>
-                                        <input #Email type="text" class="form-control" formControlName="Email"  name="Email" placeholder="Enter Email"[ngClass]="{ 'is-invalid': submitted && f.Email.errors }">
+                                        <input
+                                        class=" form-control"
+                                        placeholder="Email"
+                                        type="email"
+                                        formControlName="Email"
+                                        [ngClass]="{ 'is-invalid': submitted && f.Email.errors }"
+                                      />
                                     </div>
                                 </div>
 
                                 <div class=" col-lg-30 col-md-15 col-sm-12">
                                      <div class="form-group">
                                          <label class="form-label">User Name</label>
-                                        <input #UserName type="text" class="form-control" FormControlName="UserName" name="UserName" placeholder="Enter User name ">
+                                         <input 
+                                         class=" form-control"
+                                         placeholder="User Name"
+                                         type="text"
+                                         formControlName="UserName"
+                                         [ngClass]="{ 'is-invalid': submitted && f.UserName.errors }"
+                                       />
                                     </div>
                                 </div>
                                
                                 <div class=" col-lg-60 col-md-60 col-sm-12">
                                   <div class="form-group">
                                        <label class="form-label">Password</label>
-                                       <input #Password type="password" class="form-control" formControlName="Password" name="Password" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.Password.errors }">
-                                    </div>
+                                       <input
+                                       class=" form-control"
+                                       placeholder="Password"
+                                       type="password"
+                                       value=""
+                                       formControlName="Password"
+                                       [ngClass]="{ 'is-invalid': submitted && f.Password.errors }"
+                                       
+                                   />
+                                </div>
                                 </div> 
 
                                 <div class=" col-lg-30 col-md-15 col-sm-12">
                                     <div class="form-group">
                                         <label class="form-label">Role</label>
-                                       <input #Role type="text" class="form-control" FormControlName="Role" name="Role" placeholder="Enter Role (Admin/Employee)">
+                                        <input 
+                                        class=" form-control"
+                                        placeholder="Enter role Admin/Employee"
+                                        type="text"
+                                        formControlName="Role"
+                                        [ngClass]="{ 'is-invalid': submitted && f.Role.errors }"
+                                      />
                                    </div>
                                </div>
                               
                                 <div class="form-footer">
-                                  <button type="submit" class="btn btn-primary btn-block" [disabled]="!service.formModel.valid">Create new account</button> 
+                                  <button type="submit" class="btn btn-primary btn-block" >Create new account</button>
                                   <button class="btn btn-primary btn-block" type="reset" (click)="onReset()">Cancel</button>
                                 </div>
                             </form>
