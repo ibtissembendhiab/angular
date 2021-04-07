@@ -7,13 +7,46 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })  
   export class UploadService { 
+
+    private baseApiUrl: string;
+    private apiDownloadUrl: string;
+    private apiUploadUrl: string;
+    private apiFileUrl: string;
+
+    //folderid: any;
   
-    private API_BASE_URL = 'https://localhost:44803/api/upload';
-    folderid: any;
-  
-    constructor(private httpClient: HttpClient) {}
-  
-    public uploadFile(file: File): Observable<HttpEvent<{}>> {
+    constructor(private httpClient: HttpClient) {
+      this.baseApiUrl = 'https://localhost:44308/api/';
+      this.apiDownloadUrl = this.baseApiUrl + 'download';
+      this.apiUploadUrl = this.baseApiUrl + 'upload';
+      this.apiFileUrl = this.baseApiUrl + 'files';
+    }
+
+    public downloadFile(file: string): Observable<HttpEvent<Blob>> {
+      return this.httpClient.request(new HttpRequest(
+        'GET',
+        `${this.apiDownloadUrl}?file=${file}`,
+        null,
+        {
+          reportProgress: true,
+          responseType: 'blob'
+        }));
+    }
+
+    public uploadFile(file: Blob): Observable<HttpEvent<void>> {
+      const formData = new FormData();
+      formData.append('file', file);
+    
+      return this.httpClient.request(new HttpRequest(
+        'POST',
+        this.apiUploadUrl,
+        formData,
+        {
+          reportProgress: true
+        }));
+      }
+    
+   /* public uploadFile(file: File): Observable<HttpEvent<{}>> {
       
       var token = localStorage.getItem('token');
       const httpOptions = {
@@ -25,12 +58,15 @@ import { Observable } from 'rxjs';
       
       const req = new HttpRequest(
         'POST',
-        `${this.API_BASE_URL}`,
+        `${this.apiUploadUrl}`,
         formData,
         httpOptions
       );
       return this.httpClient.request(req);
-    }
+    }*/
 
+    public getFiles(): Observable<string[]> {
+      return this.httpClient.get<string[]>(this.apiFileUrl);
+    }
   }
 

@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 //import { FormBuilder, Validators } from '@angular/forms';
-import { Signup } from 'src/app/shared/models/signup.model';
+import { Register } from 'src/app/shared/models/register.model';
 
 @Injectable({
   providedIn: 'root'
@@ -20,9 +20,13 @@ export class SignupService {
     //Password: [[Validators.required, Validators.minLength(4)]],
     //Role: [Validators.required]
   //})
-
+  CreateUser(register:Register)  
+  {  
+   const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };  
+   return this.http.post<Register[]>(this.BaseURI + '/Register/', register, httpOptions)  
+  }  
   
-  register(signup: Signup ) {
-    return this.http.post(this.BaseURI +'/Register',signup);
-}
+ // register(register: Register ) {
+   // return this.http.post(this.BaseURI +'/Register',register);
+//}
 }

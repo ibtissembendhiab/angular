@@ -6,6 +6,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import { first } from 'rxjs/operators';
 import { SignupService } from 'src/app/core/services/signup.service';
+import { Register } from 'src/app/shared/models/register.model';
 import Swal from 'sweetalert2'
 
 @Component({
@@ -22,6 +23,10 @@ export class HrUsersComponent implements OnInit {
   contactTab: boolean;
   chatTab: boolean = true;
   modalRef: BsModalRef;
+  data = false; 
+  UserForm: any;
+  massage: string;
+     
 
   constructor(
     public service: SignupService,
@@ -55,9 +60,25 @@ export class HrUsersComponent implements OnInit {
     this.registerForm.reset();
   }
 
+  onFormSubmit()    
+  {    
+    const user = this.registerForm.value;    
+    this.Createemployee(user); 
+    }    
+  Createemployee(register:Register)    
+  {    
+  this.service.CreateUser(register).subscribe(    
+    ()=>    
+    {    
+      this.data = true;    
+      this.massage = 'Data saved Successfully';    
+      this.registerForm.reset();    
+    });    
+  }   
+
   get f() { return this.registerForm.controls;}
 
-  onSubmit() {
+  /*onSubmit() {
     this.submitted = true;
 
     // reset alerts on submit
@@ -69,7 +90,7 @@ export class HrUsersComponent implements OnInit {
     }
 
     this.loading = true;
-    this.service.register(this.registerForm.value)
+    this.service.CreateUser(this.registerForm.value)
         .pipe(first())
         .subscribe(
             data => {
@@ -80,7 +101,7 @@ export class HrUsersComponent implements OnInit {
                // this.alertService.error(error);
                 this.loading = false;
             });
-}
+}*/
 
  /* onSubmit() {
     this.submitted = true;  

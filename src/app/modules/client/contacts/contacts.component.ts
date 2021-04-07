@@ -1,8 +1,8 @@
 import { HttpClient, HttpErrorResponse, HttpEventType, HttpHeaders, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 //import { of } from 'rxjs';
-//import { catchError, map } from 'rxjs/operators';
 import { UploadService } from 'src/app/core/services/upload.service';
+//import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-contacts',
@@ -12,14 +12,17 @@ import { UploadService } from 'src/app/core/services/upload.service';
 
  
 export class ContactsComponent implements OnInit {
-  @Input() public disabled: boolean;
-  
-  @ViewChild('inputFile') inputFile: ElementRef;
+ // @Input() public disabled: boolean;
+  @Output() public onUploadFinished = new EventEmitter();
+ // @ViewChild('inputFile') inputFile: ElementRef;
   listTab: boolean;
   gridTab: boolean;
   addnewTab: boolean;
   selectedFile: File;
-  constructor(private service: UploadService) { }
+  loading: false;
+  public progress: number;
+  public message: string;
+  constructor(private http: HttpClient) { }
     
   onTab(number) {
     this.listTab = false;
@@ -43,28 +46,37 @@ export class ContactsComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  public uploadFile (event) {
+  public uploadFile = (files) => {
+    if (files.length === 0) {
+      return;
+    }
+    let fileToUpload = <File>files[0];
+    const formData = new FormData();
+    formData.append('file', fileToUpload, fileToUpload.name);
+    this.http.post('https://localhost:44308/api/upload', formData, {reportProgress: true, observe: 'events'})
+      .subscribe(event => {
+        if (event.type === HttpEventType.UploadProgress)
+          this.progress = Math.round(100 * event.loaded / event.total);
+        else if (event.type === HttpEventType.Response) {
+          this.message = 'Upload success.';
+          this.onUploadFinished.emit(event.body);
+        }
+      });
+  }
+
+
+ /* public upload(event) {
     if (event.target.files && event.target.files.length > 0) {
       const file = event.target.files[0];
       this.service.uploadFile(file).subscribe(
         data => {
-          if (data) {
-            switch (data.type) {
-              case HttpEventType.UploadProgress:
-
-                break;
-              case HttpEventType.Response:
-                this.inputFile.nativeElement.value = '';
-                break;
-            }
-          }
         },
         error => {
-          this.inputFile.nativeElement.value = '';
+          this.loading=false;
         }
       );
     }
-  } 
+  } */
   
   /*addnewTab: boolean;
   gridTab: boolean;
