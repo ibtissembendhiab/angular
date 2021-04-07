@@ -11,11 +11,29 @@
                         <div class="card-header">
                             <h3 class="card-title">Recently Accessed Files</h3>
                             <div class="card-options" placement="right" tooltip="Upload New">
-                                
-                                <a href="javascript:void(0)"><i class="fa fa-plus" data-toggle="tooltip"
-                                        data-placement="right" title="Upload New"></i></a>
+                                <button type="button" 
+                                class="card-options"  title="Upload New" (click)="AddModal(template)" data-type="confirm">
+                                <i class="fa fa-plus"  data-placement="right" data-toggle="tooltip"></i></button>
+
+                               <!--<a href="javascript:void(0)"><i class="fa fa-plus" data-toggle="tooltip"
+                                        data-placement="right" title="Upload New"></i></a> -->
                             </div>
                         </div>
+                        <ng-template #template> 
+                         
+                            <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
+                                    <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
+                                    <div class="col-md-4">
+                                        <span class="upload" *ngIf="progress > 0">
+                                          {{progress}}%
+                                        </span>
+                                        <span class="upload" *ngIf="message">
+                                          {{message}}
+                                        </span>
+                                    
+                                    </div>
+                                      
+                        </ng-template>
                         <div class="card-body">
                             <div class="file_folder">
                                 <a href="javascript:void(0);">
