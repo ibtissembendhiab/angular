@@ -9,17 +9,18 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Recently Accessed Files</h3>
-                            <div class="card-options" placement="right" tooltip="Upload New">
-                                <button type="button" 
-                                class="card-options"  title="Upload New" (click)="AddModal(template)" data-type="confirm">
-                                <i class="fa fa-plus"  data-placement="right" data-toggle="tooltip"></i></button>
+                            <h1 class="card-title">Your Files</h1>
 
+                            <div class="card-options" placement="right" tooltip="Upload New">
+                                <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
+                                <button type="button" class="btn btn-primary" data-toggle="modal"  (click)="file.click()"
+                    data-target="#exampleModal"><i class="fe fe-plus mr-2"></i>Add</button>
+                             
                                <!--<a href="javascript:void(0)"><i class="fa fa-plus" data-toggle="tooltip"
                                         data-placement="right" title="Upload New"></i></a> -->
                             </div>
                         </div>
-                        <ng-template #template> 
+                      <!--  <ng-template #template> 
                          
                             <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
                                     <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
@@ -33,36 +34,67 @@
                                     
                                     </div>
                                       
-                        </ng-template>
+                        </ng-template> -->
                         <div class="card-body">
+                            <ul class="nav nav-tabs page-header-tab">
+                                <li class="nav-item"><a class="nav-link active" id="Departments-list" data-toggle="tab"
+                                        href="javascript:void(0)" (click)="onTab('1')" [ngClass]="{'active': dplistTab}">List
+                                        View</a></li>
+                                <li class="nav-item"><a class="nav-link" id="Departments-grid" data-toggle="tab"
+                                        href="javascript:void(0)" (click)="onTab('2')" [ngClass]="{'active': dpgridTab}">Grid
+                                        View</a></li>
+                            </ul>
+
                             <div class="file_folder">
-                                <a href="javascript:void(0);">
-                                    <div class="icon">
-                                        <i class="fa fa-folder text-success"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <p class="mb-0 text-muted">Family</p>
-                                        <small>3 File, 1.2GB</small>
-                                    </div>
-                                </a>
-                                <a class="ml-1" href="javascript:void(0);">
-                                    <div class="icon">
-                                        <i class="fa fa-file-word-o text-primary"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <p class="mb-0 text-muted">Report2017.doc</p>
-                                        <small>Size: 68KB</small>
-                                    </div>
-                                </a>
-                                <a class="ml-1" href="javascript:void(0);">
-                                    <div class="icon">
-                                        <i class="fa fa-file-pdf-o text-danger"></i>
-                                    </div>
-                                    <div class="file-name">
-                                        <p class="mb-0 text-muted">Report2017.pdf</p>
-                                        <small>Size: 68KB</small>
-                                    </div>
-                                </a>
+                                <table class="table table-striped ">
+                                    <thead>
+                                      <th>#</th>
+                                      <th>File Id</th>
+                                      <th>File Name</th>
+                                      <th>File Size</th>
+                                      <th>File Owner</th>
+                                      <th>Action</th>
+
+                                      
+                                    </thead>
+                                     <tbody>
+
+                                       <tr *ngFor="let f of allfilelist; index as i" > 
+                                        <td> 
+                                            {{ i + 1 }}
+                                        </td>
+                                       <td> 
+                                            {{ f.fileId}}
+                                        </td>
+                                      <td> 
+                                          {{f.fileName}}
+                                        </td>
+                                      <td>
+                                            {{f.fileSize}}
+                                       </td>
+                                       <td>
+                                            {{f.fileOwner}}
+                                       </td> 
+
+                                       <td>
+                                        <button type="button" 
+                                        class="btn btn-icon" title="Archive" data-type="confirm">
+                                        <i class="fa fa-archive text-danger"></i></button>
+
+                                        <button type="button" 
+                                        class="btn btn-icon" title="Download" data-type="confirm">
+                                        <i (click)="downloadFile(f.fileName)"class="fa fa-download text-danger"></i></button>
+                                        
+                                        <button type="button" 
+                                        class="btn btn-icon js-sweetalert" title="Delete"
+                                        data-type="confirm">
+                                        <i   (click)="deleteFile(f.fileId)" class="fa fa-trash-o text-danger"> </i>
+                                    </button>
+                                       </td>
+                                        
+                                    </tr>
+                                     </tbody> 
+                                </table>
                             </div>
                         </div>
                     </div>

@@ -25,7 +25,10 @@ export class SignupService {
     return this.http.post(this.BaseURI +'/Register',signup);
 }
 
- 
+deleteUser(IDuser)
+{
+  return this.http.delete('"https://localhost:44308/api/User/'+ IDuser)
+}
 
 
 

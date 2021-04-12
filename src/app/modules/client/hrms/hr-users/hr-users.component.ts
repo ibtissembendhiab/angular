@@ -1,10 +1,10 @@
+import { SignupService } from './../../../../core/services/signup.service';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';0
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import { first } from 'rxjs/operators';
-import { SignupService } from 'src/app/core/services/signup.service';
 import Swal from 'sweetalert2'
 @Component({
   selector: 'app-hr-users',
@@ -58,6 +58,15 @@ export class HrUsersComponent implements OnInit {
      })
    }
   
+  /* public deleteUser(file) 
+   {
+     this.collection.splice(file.fileID,1)
+     this.service.deleteUser(file).subscribe(FileList=>{
+     console.log("File Deleted",FileList)
+     })
+ 
+   }*/
+
   onReset() {
     this.submitted = false;
     this.registerForm.reset();
