@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
 
   get f() { return this.registerForm.controls;}
 
-    onSubmit() {
+   /* onSubmit() {
         this.submitted = true;  
 
         // stop here if form is invalid
@@ -57,6 +57,6 @@ export class RegisterComponent implements OnInit {
                 error => {
                     this.loading = false;
                 });
-    }
+    }*/
  
 }

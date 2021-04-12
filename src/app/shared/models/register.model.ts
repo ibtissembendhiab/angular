@@ -5,4 +5,6 @@ export class Signup {
   UserName: string;
   Email: string;
   Password: string;
+  Role: string;
+  token: string;
 }

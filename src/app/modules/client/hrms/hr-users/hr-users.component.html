@@ -44,23 +44,28 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-hover table-vcenter text-nowrap mb-0">
+                               <table class="table table-striped table-hover table-vcenter text-nowrap mb-0">
                                     <thead>
                                         <tr>
-                                            <th class="w60">User Name</th>
-                                            <th></th>
-                                            <th></th>
+                                            <th class="w60">#</th>
+                                            <th>UserName</th>
+                                            <th>FirstName</th>
+                                            <th>LastName</th>
                                             <th>Email</th>
                                             <th>Role</th>
                                             <th class="w100">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    
-                               
-                                       <tr>
-                                          
+                                        <tr *ngFor="let e of li; index as i">
+                                            <td>{{ i+1 }}</td>
+                                            <td>{{ e.userName }}</td>
+                                            <td>{{ e.firstName }}</td>
+                                            <td>{{ e.lastName }}</td>
+                                            <td>{{ e.email }}</td>
+                                            <td>{{ e.roles }}</td>
                                             <td>
+<<<<<<< HEAD
                                               <button type="button" 
                                                        class="btn btn-icon" title="Edit" data-type="confirm">
                                                        <i class="fa fa-archive"></i></button>
@@ -72,7 +77,21 @@
                                                     <i   class="fa fa-trash-o text-danger"> </i>
                                                 </button>
                                             </td>
+=======
+                                                <!--<button type="button" 
+                                                         class="btn btn-icon" title="Edit" (click)="AddModal(template)" data-type="confirm">
+                                                         <i class="fa fa-edit"></i></button>--> 
+                                                 
+                                                 
+                                                      <button type="button" (click)="sweettalert7()"
+                                                      class="btn btn-icon js-sweetalert" title="Delete"
+                                                      data-type="confirm">
+                                                      <i  class="fa fa-trash-o text-danger"> </i>
+                                                  </button>
+                                              </td>
+>>>>>>> 0932ae6727bbcf84c6b90aa9620be879c2b894e0
                                         </tr>
+                                    
                                     
                                     </tbody>
                                 </table>
@@ -127,8 +146,12 @@
                     </div>
                 </ng-template>  -->
 
+<<<<<<< HEAD
 
            <!--   formulaire el 3adi taa el registration : -->
+=======
+           <!--   formulaire registration : -->
+>>>>>>> 0932ae6727bbcf84c6b90aa9620be879c2b894e0
                 <div class="tab-pane fade" [ngClass]="{'show active': contactTab}" id="user-add" role="tabpanel">
                     <div class="card cardCollapsible">
                         <div class="card-body">

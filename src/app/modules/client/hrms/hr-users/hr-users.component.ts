@@ -1,11 +1,22 @@
+<<<<<<< HEAD
 import { SignupService } from './../../../../core/services/signup.service';
 import { Component, OnInit, TemplateRef } from '@angular/core';
+=======
+import { HttpClient } from '@angular/common/http';
+import { Component, Input, OnInit, TemplateRef } from '@angular/core';
+>>>>>>> 0932ae6727bbcf84c6b90aa9620be879c2b894e0
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';0
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import { first } from 'rxjs/operators';
+<<<<<<< HEAD
+=======
+import { SignupService } from 'src/app/core/services/signup.service';
+import { UserService } from 'src/app/core/services/user.service';
+>>>>>>> 0932ae6727bbcf84c6b90aa9620be879c2b894e0
 import Swal from 'sweetalert2'
+
 @Component({
   selector: 'app-hr-users',
   templateUrl: './hr-users.component.html',
@@ -14,11 +25,19 @@ import Swal from 'sweetalert2'
 
 export class HrUsersComponent implements OnInit {
 
+ // @Input()
+ li:any;
+ lis=[];
+
   loading = false;
   submitted = false;
   contactTab: boolean;
   chatTab: boolean = true;
   modalRef: BsModalRef;
+  data = false; 
+  UserForm: any;
+  massage: string;
+     
 
   FirstName = new FormControl("",Validators.required);
   LastName = new FormControl("",Validators.required);
@@ -36,14 +55,16 @@ export class HrUsersComponent implements OnInit {
     Role : new FormControl(),
 
   })
-  
+    
   constructor(
     public service: SignupService,
      public toastr: ToastrService, 
      private route: ActivatedRoute,
      private formBuilder: FormBuilder,
      private router: Router,
-     private modalService: BsModalService
+     private modalService: BsModalService,
+     private http: HttpClient,
+     private Service: UserService
   ) { }
 
   ngOnInit(): void
@@ -56,6 +77,7 @@ export class HrUsersComponent implements OnInit {
        Password: this.Password,
        Role : this.Role,
      })
+<<<<<<< HEAD
    }
   
   /* public deleteUser(file) 
@@ -67,12 +89,31 @@ export class HrUsersComponent implements OnInit {
  
    }*/
 
+=======
+
+     this.Service.getAll().subscribe(Response => {
+      console.log(Response)
+      // If response comes hideloader() function is called
+      // to hide that loader 
+      // if(Response){  
+      //   hideloader();
+      // } 
+      this.li=Response;
+      this.lis=this.li.list; 
+      console.log(this.li);
+    });
+    function hideloader(){
+      document.getElementById('loading').style.display = 'block';}
+  }
+    
+   
+>>>>>>> 0932ae6727bbcf84c6b90aa9620be879c2b894e0
   onReset() {
     this.submitted = false;
     this.registerForm.reset();
   }
 
-  get f() { return this.registerForm.controls;}
+  get f() {return this.registerForm.controls;}
 
   onSubmit() {
     this.submitted = true;  

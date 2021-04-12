@@ -1,4 +1,4 @@
-  <!--
+ 
   <app-leftmenu></app-leftmenu>
 
 <div class="page">
@@ -42,7 +42,7 @@
                         <div class="card-body">
                             <div class="row clearfix">
                               
-                                 <div class="col-lg-12">
+                                <!--<div class="col-lg-12">
                                   <div class="container-upload">
                                         <button [disabled]="disabled" [ngClass]="{'disabled': disabled}" class="button upload" (click)="inputFile.click()">
                                             UPLOAD
@@ -50,19 +50,29 @@
                                          <button type="submit" class="btn btn-primary">Add</button>
                                          <input type="file" #fileUpload  placeholder="Choose file" id="fileUpload" name="fileUpload" accept="image/*" style="display:none;" (change)="uploadFile(file.files)" class="dropify">
                                         <input name="file" id="file"(change)="upload($event)" type="file" #inputFile hidden>
-                                    </div> -->
-                                   <!--
-                                    <input #fileUpload type="file" class="dropify" name="fileUpload" id="fileUpload" >
+                                    </div>-->
+                                    <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
+                                    <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
+                                    <div class="col-md-4">
+                                        <span class="upload" *ngIf="progress > 0">
+                                          {{progress}}%
+                                        </span>
+                                        <span class="upload" *ngIf="message">
+                                          {{message}}
+                                        </span>
+                                      </div>
+                                    <!--  <input #fileUpload type="file" class="dropify" name="fileUpload" id="fileUpload" >
                                 </div>
                                 <div class="col-lg-12 mt-3">
-                                    <button type="submit"   #fileUpload class="btn btn-primary" (change)="uploadFile($event)">Upload</button>
+                                    <button type="submit"   #fileUpload class="btn btn-primary" (click)="upload($event)">Add</button>
+                            
                                     <button type="reset" (click)="onReset()" class="btn btn-default ml-1">Cancel</button>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
                 </div>
         
                 <app-footer></app-footer> 
-</div> -->
 
+</div>

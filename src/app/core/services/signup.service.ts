@@ -1,14 +1,14 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Signup } from 'src/app/shared/models/signup.model';
+import {  Signup } from 'src/app/shared/models/register.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SignupService {
  
-  constructor(public fb: FormBuilder, public http: HttpClient) { }
+  constructor(public fb:FormBuilder ,public http: HttpClient) { }
   readonly BaseURI = 'https://localhost:44308/api/User';
  
   formModel = this.fb.group({
@@ -20,7 +20,6 @@ export class SignupService {
     Role:     [Validators.required]
   })
 
-  
   register(signup: Signup ) {
     return this.http.post(this.BaseURI +'/Register',signup);
 }
