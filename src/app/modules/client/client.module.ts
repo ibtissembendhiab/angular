@@ -23,7 +23,7 @@ import { TablesComponent } from './UI-ELEMENTS/tables/tables.component';
 import { NgApexchartsModule } from "ng-apexcharts";
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-//import { ContactsComponent } from './contacts/contacts.component';
+import { ContactsComponent } from './contacts/contacts.component';
 import { FilemanagerComponent } from './filemanager/filemanager.component';
 import { SettingsComponent } from './settings/settings.component';
 import { FullCalendarModule } from '@fullcalendar/angular'; // the main connector. must go first
@@ -105,7 +105,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     LeftmenuComponent,
     FormElementComponent,
     TablesComponent,
-    //ContactsComponent,
+    ContactsComponent,
     FilemanagerComponent,
     SettingsComponent,
     CkeditorComponent,

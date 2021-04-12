@@ -1,7 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpEventType, HttpHeaders, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 //import { of } from 'rxjs';
-import { UploadService } from 'src/app/core/services/upload.service';
 //import {ToastrService} from 'ngx-toastr';
 
 @Component({

@@ -4,8 +4,7 @@ import { Injectable } from '@angular/core';
     providedIn: 'root'
 })
 export class LoggerService {
-
-    constructor() { }
+    constructor() {}
 
     log(msg: string) {
         console.log(msg);
@@ -15,4 +14,8 @@ export class LoggerService {
         console.error(msg);
     }
 
+  //  getAll() {
+       // return this.http.get<any[]>(`${config.BaseURI}/GetAllUsers`);
+  //  }
+   
 }
