@@ -32,21 +32,11 @@ import interactionPlugin from '@fullcalendar/interaction'; // a plugin
 import timeGridPlugin from '@fullcalendar/timegrid';
 import { AgmCoreModule } from '@agm/core';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-import { CkeditorComponent } from './ckeditor/ckeditor.component';
 import { HRMSComponent } from './hrms/hrms.component';
 import { HrUsersComponent } from './HRMS/hr-users/hr-users.component';
 import { HrDashboardComponent } from './HRMS/hr-dashboard/hr-dashboard.component';
 import { HrDepartmentsComponent } from './hrms/hr-departments/hr-departments.component';
-import { HrActivitiesComponent } from './hrms/hr-activities/hr-activities.component';
 import { SearchComponent } from './search/search.component';
-import { ProjectComponent } from './project/project.component';
-import { PrDashboardComponent } from './project/pr-dashboard/pr-dashboard.component';
-import { PrProjectlistComponent } from './project/pr-projectlist/pr-projectlist.component';
-import { PrTaskboardComponent } from './project/pr-taskboard/pr-taskboard.component';
-import { PrTicketdetailsComponent } from './project/pr-ticketdetails/pr-ticketdetails.component';
-import { PrTicketlistComponent } from './project/pr-ticketlist/pr-ticketlist.component';
-import { PrClientsComponent } from './project/pr-clients/pr-clients.component';
-import { PrTodolistComponent } from './project/pr-todolist/pr-todolist.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { UIELEMENTSComponent } from './ui-elements/ui-elements.component';
 import { IconsComponent } from './UI-ELEMENTS/icons/icons.component';
@@ -108,22 +98,14 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     ContactsComponent,
     FilemanagerComponent,
     SettingsComponent,
-    CkeditorComponent,
+
     HRMSComponent,
     HrUsersComponent,
     HrDashboardComponent,
     HrDepartmentsComponent,
-    HrActivitiesComponent,
-    SearchComponent,
-    ProjectComponent,
-    PrDashboardComponent,
-    PrProjectlistComponent,
-    PrTaskboardComponent,
-    PrTicketdetailsComponent,
 
-    PrTicketlistComponent,
-    PrClientsComponent,
-    PrTodolistComponent,
+    SearchComponent,
+ 
     UIELEMENTSComponent,
     IconsComponent,
     IconFontawesomeComponent,

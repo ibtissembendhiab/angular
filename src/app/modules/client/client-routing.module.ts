@@ -10,17 +10,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { HrDashboardComponent } from './HRMS/hr-dashboard/hr-dashboard.component';
 import { HrUsersComponent } from './HRMS/hr-users/hr-users.component';
 import { HrDepartmentsComponent } from './hrms/hr-departments/hr-departments.component';
-import { HrActivitiesComponent } from './hrms/hr-activities/hr-activities.component';
+
 import { HRMSComponent } from './hrms/hrms.component';
 import { SearchComponent } from './search/search.component';
-import { PrDashboardComponent } from './project/pr-dashboard/pr-dashboard.component';
-import { PrProjectlistComponent } from './project/pr-projectlist/pr-projectlist.component';
-import { PrTaskboardComponent } from './project/pr-taskboard/pr-taskboard.component';
-import { PrTicketlistComponent } from './project/pr-ticketlist/pr-ticketlist.component';
-import { PrTicketdetailsComponent } from './project/pr-ticketdetails/pr-ticketdetails.component';
-import { PrClientsComponent } from './project/pr-clients/pr-clients.component';
-import { PrTodolistComponent } from './project/pr-todolist/pr-todolist.component';
-import { ProjectComponent } from './project/project.component';
+
 import { IconFontawesomeComponent } from './UI-ELEMENTS/icons/icon-fontawesome/icon-fontawesome.component';
 import { IconFeatherComponent } from './UI-ELEMENTS/icons/icon-feather/icon-feather.component';
 import { IconLinesComponent } from './UI-ELEMENTS/icons/icon-lines/icon-lines.component';
@@ -50,11 +43,7 @@ const routes: Routes = [
     component: HrDepartmentsComponent,
     data: { title: 'Groupes' }
   },
-  {
-    path: 'hr-activities',
-    component: HrActivitiesComponent,
-    data: { title: 'Activities' }
-  },
+ 
   {
     path: 'search',
     component: SearchComponent,
@@ -72,47 +61,6 @@ const routes: Routes = [
     component: FilemanagerComponent,
     data: { title: 'Filemanager' }
   },
-  {
-    path: 'project',
-    component: ProjectComponent,
-    data: { title: ' Project' }
-  },
-  {
-    path: 'project-deashboard',
-    component: PrDashboardComponent,
-    data: { title: 'Project Dashboard' }
-  },
-  {
-    path: 'project-list',
-    component: PrProjectlistComponent,
-    data: { title: ' Project List' }
-  },
-  {
-    path: 'project-taskboard',
-    component: PrTaskboardComponent,
-    data: { title: 'Project Taskboard' }
-  },
-  {
-    path: 'project-ticketlist',
-    component: PrTicketlistComponent,
-    data: { title: ' Project Ticketlist' }
-  },
-  {
-    path: 'project-ticketdetails',
-    component: PrTicketdetailsComponent,
-    data: { title: 'Project Ticketdetails' }
-  },
-  {
-    path: 'project-clients',
-    component: PrClientsComponent,
-    data: { title: ' Project Clients' }
-  },
-  {
-    path: 'project-todo-list',
-    component: PrTodolistComponent,
-    data: { title: ' Project Todolist' }
-  },
- 
   {
     path: 'icon-fontawesome',
     component: IconFontawesomeComponent,
