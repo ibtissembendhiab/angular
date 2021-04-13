@@ -4,6 +4,7 @@ import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Component, EventEmitter, OnInit, Output, TemplateRef } from '@angular/core';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { File } from 'src/app/shared/models/file.model';
+import { AdminService } from 'src/app/core/services/admin.service';
 
 @Component({
   selector: 'app-filemanager',
@@ -14,6 +15,10 @@ export class FilemanagerComponent implements OnInit {
   allfilelist;
   modalRef: BsModalRef;
   @Output() public onUploadFinished = new EventEmitter();
+  listTab: boolean;
+  gridTab: boolean;
+  addnewTab: boolean;
+  selectedFile: File;
   public progress: number;
   public message: string;
   
@@ -21,8 +26,9 @@ export class FilemanagerComponent implements OnInit {
    public collection:any= [];
    dplistTab: boolean = true;
    dpgridTab: boolean;
+  loading: boolean;
 
-  constructor(private http: HttpClient  ,private modalService: BsModalService, private UploadService : UploadService, private toastr:ToastrService ) { }
+  constructor(private http: HttpClient  ,private modalService: BsModalService, private UploadService : UploadService, private toastr:ToastrService, private adminservice : AdminService ) { }
 
   ngOnInit(): void {
 
@@ -37,6 +43,7 @@ export class FilemanagerComponent implements OnInit {
     );
     
   }
+ 
 
   public deleteFile(file) 
   {
@@ -47,6 +54,17 @@ export class FilemanagerComponent implements OnInit {
 
   }
 
+  archivefile(file){
+    this.adminservice.Archivefile(file.fileid).subscribe(res =>{
+      console.log(res)
+      this.toastr.success("Archived")
+      error => {
+        this.loading = false;
+
+    }
+  })
+  }
+
   downloadFile(fileName) {
     this.UploadService.downloadFile(fileName).subscribe((response) => {
         this.message = response['message'];
@@ -54,7 +72,7 @@ export class FilemanagerComponent implements OnInit {
 }
 
 
-  public uploadFile = (files) => {
+ /* public uploadFile = (files) => {
     if (files.length === 0) {
       return;
     }
@@ -70,7 +88,7 @@ export class FilemanagerComponent implements OnInit {
           this.onUploadFinished.emit(event.body);
         }
       });
-  }
+  }*/
 
   AddModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(

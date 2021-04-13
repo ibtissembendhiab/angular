@@ -11,7 +11,7 @@ import { catchError } from 'rxjs/operators';
   
     constructor(private httpclient: HttpClient) {}
   
-    public uploadFile(file: Blob): Observable<HttpEvent<void>> {
+   /* public uploadFile(file: Blob): Observable<HttpEvent<void>> {
       const formData = new FormData();
       formData.append('file',file);
 
@@ -21,7 +21,7 @@ import { catchError } from 'rxjs/operators';
         {
           reportProgress: true
         }));
-      }
+      }*/
 
 
     getallFiles() {
