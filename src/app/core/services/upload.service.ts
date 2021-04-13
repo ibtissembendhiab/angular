@@ -16,7 +16,6 @@ import { catchError } from 'rxjs/operators';
 
     //folderid: any;
   
-<<<<<<< HEAD
     private API_BASE_URL = 'https://localhost:44308/api/upload';
     
   
@@ -27,31 +26,6 @@ import { catchError } from 'rxjs/operators';
       formData.append('file',file);
 
       return this.httpclient.request(new HttpRequest(
-=======
-    constructor(private httpClient: HttpClient) {
-      this.baseApiUrl = 'https://localhost:44308/api/';
-      this.apiDownloadUrl = this.baseApiUrl + 'download';
-      this.apiUploadUrl = this.baseApiUrl + 'upload';
-      this.apiFileUrl = this.baseApiUrl + 'files';
-    }
-
-    public downloadFile(file: string): Observable<HttpEvent<Blob>> {
-      return this.httpClient.request(new HttpRequest(
-        'GET',
-        `${this.apiDownloadUrl}?file=${file}`,
-        null,
-        {
-          reportProgress: true,
-          responseType: 'blob'
-        }));
-    }
-
-    public uploadFile(file: Blob): Observable<HttpEvent<void>> {
-      const formData = new FormData();
-      formData.append('file', file);
-    
-      return this.httpClient.request(new HttpRequest(
->>>>>>> 0932ae6727bbcf84c6b90aa9620be879c2b894e0
         'POST',
         this.apiUploadUrl,
         formData,
@@ -59,7 +33,6 @@ import { catchError } from 'rxjs/operators';
           reportProgress: true
         }));
       }
-<<<<<<< HEAD
 
 
       getallFiles() {
@@ -78,31 +51,6 @@ import { catchError } from 'rxjs/operators';
       
 
       
-=======
-    
-   /* public uploadFile(file: File): Observable<HttpEvent<{}>> {
-      
-      var token = localStorage.getItem('token');
-      const httpOptions = {
-        headers: new HttpHeaders().set("Authorization", "Bearer " + token),
-      };
-  
-      const formData = new FormData();
-      formData.append('file',file);
-
-      return this.httpClient.request(new HttpRequest(
-        'POST',
-        `${this.apiUploadUrl}`,
-        formData,
-        httpOptions
-      );
-      return this.httpClient.request(req);
-    }*/
-
-    public getFiles(): Observable<string[]> {
-      return this.httpClient.get<string[]>(this.apiFileUrl);
-    }
->>>>>>> 0932ae6727bbcf84c6b90aa9620be879c2b894e0
   }
 
   

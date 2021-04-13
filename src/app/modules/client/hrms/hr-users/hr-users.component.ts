@@ -1,20 +1,12 @@
-<<<<<<< HEAD
-import { SignupService } from './../../../../core/services/signup.service';
-import { Component, OnInit, TemplateRef } from '@angular/core';
-=======
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit, TemplateRef } from '@angular/core';
->>>>>>> 0932ae6727bbcf84c6b90aa9620be879c2b894e0
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';0
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import { first } from 'rxjs/operators';
-<<<<<<< HEAD
-=======
 import { SignupService } from 'src/app/core/services/signup.service';
 import { UserService } from 'src/app/core/services/user.service';
->>>>>>> 0932ae6727bbcf84c6b90aa9620be879c2b894e0
 import Swal from 'sweetalert2'
 
 @Component({
@@ -77,19 +69,6 @@ export class HrUsersComponent implements OnInit {
        Password: this.Password,
        Role : this.Role,
      })
-<<<<<<< HEAD
-   }
-  
-  /* public deleteUser(file) 
-   {
-     this.collection.splice(file.fileID,1)
-     this.service.deleteUser(file).subscribe(FileList=>{
-     console.log("File Deleted",FileList)
-     })
- 
-   }*/
-
-=======
 
      this.Service.getAll().subscribe(Response => {
       console.log(Response)
@@ -107,7 +86,6 @@ export class HrUsersComponent implements OnInit {
   }
     
    
->>>>>>> 0932ae6727bbcf84c6b90aa9620be879c2b894e0
   onReset() {
     this.submitted = false;
     this.registerForm.reset();
