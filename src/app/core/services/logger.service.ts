@@ -13,9 +13,4 @@ export class LoggerService {
     logError(msg: string) {
         console.error(msg);
     }
-
-  //  getAll() {
-       // return this.http.get<any[]>(`${config.BaseURI}/GetAllUsers`);
-  //  }
-   
 }

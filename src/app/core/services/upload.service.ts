@@ -8,16 +8,6 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })  
   export class UploadService { 
-
-    private baseApiUrl: string;
-    private apiDownloadUrl: string;
-    private apiUploadUrl: string;
-    private apiFileUrl: string;
-
-    //folderid: any;
-  
-    private API_BASE_URL = 'https://localhost:44308/api/upload';
-    
   
     constructor(private httpclient: HttpClient) {}
   
@@ -26,8 +16,7 @@ import { catchError } from 'rxjs/operators';
       formData.append('file',file);
 
       return this.httpclient.request(new HttpRequest(
-        'POST',
-        this.apiUploadUrl,
+        'POST','https://localhost:44308/api/upload',
         formData,
         {
           reportProgress: true
@@ -35,9 +24,9 @@ import { catchError } from 'rxjs/operators';
       }
 
 
-      getallFiles() {
-        return this.httpclient.get('https://localhost:44308/file/GetAllFiles')
-      }
+    getallFiles() {
+      return this.httpclient.get('https://localhost:44308/file/GetAllFiles')
+    }
 
     deleteFile(fileID)
     {
@@ -46,10 +35,7 @@ import { catchError } from 'rxjs/operators';
       
     public downloadFile(fileName) {
       return this.httpclient.get('https://localhost:44308/api/download' +fileName);
-  }
-    
-      
-
+    }
       
   }
 
