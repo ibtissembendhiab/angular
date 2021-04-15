@@ -8,10 +8,12 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })  
   export class UploadService { 
+    private apiDownloadUrl: string;
+    constructor(private httpclient: HttpClient) {
+      this.apiDownloadUrl = 'https://localhost:44308/api/download';
+    }
   
-    constructor(private httpclient: HttpClient) {}
-  
-   /* public uploadFile(file: Blob): Observable<HttpEvent<void>> {
+    public uploadFile(file: Blob): Observable<HttpEvent<void>> {
       const formData = new FormData();
       formData.append('file',file);
 
@@ -21,8 +23,18 @@ import { catchError } from 'rxjs/operators';
         {
           reportProgress: true
         }));
-      }*/
+      }
 
+      public downloadFile(file: string): Observable<HttpEvent<Blob>> {
+        return this.httpclient.request(new HttpRequest(
+          'GET',
+          `${this.apiDownloadUrl}?file=${file}`,
+          null,
+          {
+            reportProgress: true,
+            responseType: 'blob'
+          }));
+      }
 
     getallFiles() {
       return this.httpclient.get('https://localhost:44308/file/GetAllFiles')
@@ -32,10 +44,7 @@ import { catchError } from 'rxjs/operators';
     {
       return this.httpclient.delete('https://localhost:44308/file/DeleteFile'+fileID)
     }
-      
-    public downloadFile(fileName) {
-      return this.httpclient.get('https://localhost:44308/api/download' +fileName);
-    }
+    
       
   }
 

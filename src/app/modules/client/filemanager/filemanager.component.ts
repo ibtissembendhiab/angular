@@ -19,37 +19,39 @@ export class FilemanagerComponent implements OnInit {
   gridTab: boolean;
   addnewTab: boolean;
   selectedFile: File;
-  public progress: number;
-  public message: string;
-  
    isLoading: boolean = false;
    public collection:any= [];
    dplistTab: boolean = true;
    dpgridTab: boolean;
-  loading: boolean;
+   loading: boolean;
+   FileName : string;
+  
 
-  constructor(private http: HttpClient  ,private modalService: BsModalService, private UploadService : UploadService, private toastr:ToastrService, private adminservice : AdminService ) { }
+  constructor(private http: HttpClient  ,
+              private modalService: BsModalService, 
+              private UploadService : UploadService, 
+              private toastr:ToastrService, 
+              private adminservice : AdminService ) { }
 
   ngOnInit(): void {
 
-    this.UploadService.getallFiles().subscribe(FileList=> {
+    this.UploadService.getallFiles().subscribe
+    (FileList=> {
       console.log(FileList)
       this.allfilelist=FileList;
       this.collection= FileList;
       console.log(this.collection)
     }
-    //(error: any[]) => console.log('Error: ' + error),
-    //() => console.log('Completed')
     );
     
   }
  
-
-  public deleteFile(file) 
+ public deleteFile(file) 
   {
     this.collection.splice(file.fileID,1)
     this.UploadService.deleteFile(file).subscribe(FileList=>{
-    console.log("File Deleted",FileList)
+    console.log("File Deleted",FileList),
+    this.toastr.success('File Deleted')
     })
 
   }
@@ -64,31 +66,6 @@ export class FilemanagerComponent implements OnInit {
     }
   })
   }
-
-  downloadFile(fileName) {
-    this.UploadService.downloadFile(fileName).subscribe((response) => {
-        this.message = response['message'];
-    });
-}
-
-
- /* public uploadFile = (files) => {
-    if (files.length === 0) {
-      return;
-    }
-    let fileToUpload = <File>files[0];
-    const formData = new FormData();
-    formData.append('file',  fileToUpload.FileName);
-    this.http.post('https://localhost:44308/api/upload', formData, {reportProgress: true, observe: 'events'})
-      .subscribe(event => {
-        if (event.type === HttpEventType.UploadProgress)
-          this.progress = Math.round(100 * event.loaded / event.total);
-        else if (event.type === HttpEventType.Response) {
-          this.message = 'Upload success.';
-          this.onUploadFinished.emit(event.body);
-        }
-      });
-  }*/
 
   AddModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(
@@ -107,5 +84,32 @@ export class FilemanagerComponent implements OnInit {
       this.dpgridTab = true;
     }
   }
+  //à revoir
+  public download() {
+    this.UploadService.downloadFile(this.FileName).subscribe(
+      data => {
+        switch (data.type) {
+          case HttpEventType.DownloadProgress:
+            this.toastr.success("File Downloaded");
+            break;
 
+          case HttpEventType.Response:
+            const downloadedFile = new Blob([data.body], { type: data.body.type });
+            const a = document.createElement('a');
+            a.setAttribute('style', 'display:none;');
+            document.body.appendChild(a);
+            a.download = this.FileName;
+            a.href = URL.createObjectURL(downloadedFile);
+            a.target = '_blank';
+            a.click();
+            document.body.removeChild(a);
+            break;
+        }
+      },
+      error => { 
+        this.toastr.warning("Failed");
+        
+      }
+    );
+  }
 }

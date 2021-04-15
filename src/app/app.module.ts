@@ -10,7 +10,6 @@ import { DatepickerModule, BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { RegisterComponent } from './modules/auth/register/register.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

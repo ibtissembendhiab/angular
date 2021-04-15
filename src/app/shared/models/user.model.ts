@@ -1,4 +1,5 @@
 export class UserModel{
+    UserID: string;
     UserName:string;
     FirstName: string;
     LastName: string;

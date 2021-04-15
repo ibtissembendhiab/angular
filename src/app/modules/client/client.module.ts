@@ -1,7 +1,6 @@
 import { RegisterComponent } from './../auth/register/register.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { ClientRoutingModule } from './client-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
@@ -50,6 +49,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { CountToModule } from 'angular-count-to';
 import { FooterComponent } from './footer/footer.component';
+import { ArchiveComponent } from './archive/archive.component';
+
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
   timeGridPlugin,
@@ -98,7 +99,6 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     ContactsComponent,
     FilemanagerComponent,
     SettingsComponent,
-
     HRMSComponent,
     HrUsersComponent,
     HrDashboardComponent,
@@ -116,6 +116,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     GalleryComponent,
     ProfileComponent,
     FooterComponent,
+    ArchiveComponent,
   ],
   providers: [BsDatepickerModule]
 })

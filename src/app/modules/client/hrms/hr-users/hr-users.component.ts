@@ -1,3 +1,4 @@
+import { UserModel } from './../../../../shared/models/user.model';
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -8,6 +9,7 @@ import { first } from 'rxjs/operators';
 import { SignupService } from 'src/app/core/services/signup.service';
 import { UserService } from 'src/app/core/services/user.service';
 import Swal from 'sweetalert2'
+
 
 @Component({
   selector: 'app-hr-users',
@@ -45,8 +47,8 @@ export class HrUsersComponent implements OnInit {
     UserName : new FormControl(),
     Password : new FormControl(),
     Role : new FormControl(),
-
-  })
+  });
+  public collection:any= [];
     
   constructor(
     public service: SignupService,
@@ -159,6 +161,16 @@ export class HrUsersComponent implements OnInit {
     );
   }
 
+  //Delete User 
+ /* public deleteUser(user) 
+  {
+    this.collection.splice(user.id,1)
+    this.Service.deleteUser(user).subscribe(UserList=>{
+    console.log("user Deleted",FileList),
+    this.toastr.success('File Deleted')
+    })
+
+  }*/
 
   
 

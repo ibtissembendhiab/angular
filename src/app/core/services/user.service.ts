@@ -11,4 +11,10 @@ export class UserService {
      return this.http.get<any[]>(`https://localhost:44308/api/User/GetAllUsers`);
 
    }
+
+
+   /*deleteUser(id)
+    {
+      return this.http.delete('https://localhost:44308/api/User/Delete'+id)
+    }*/
 }

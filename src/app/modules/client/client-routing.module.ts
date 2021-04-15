@@ -6,14 +6,13 @@ import { FilemanagerComponent } from './filemanager/filemanager.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { SettingsComponent } from './settings/settings.component';
 import { ProfileComponent } from './profile/profile.component';
-
+import { ArchiveComponent} from '../client/archive/archive.component';
 import { HrDashboardComponent } from './HRMS/hr-dashboard/hr-dashboard.component';
 import { HrUsersComponent } from './HRMS/hr-users/hr-users.component';
 import { HrDepartmentsComponent } from './hrms/hr-departments/hr-departments.component';
 
 import { HRMSComponent } from './hrms/hrms.component';
 import { SearchComponent } from './search/search.component';
-
 import { IconFontawesomeComponent } from './UI-ELEMENTS/icons/icon-fontawesome/icon-fontawesome.component';
 import { IconFeatherComponent } from './UI-ELEMENTS/icons/icon-feather/icon-feather.component';
 import { IconLinesComponent } from './UI-ELEMENTS/icons/icon-lines/icon-lines.component';
@@ -110,6 +109,11 @@ const routes: Routes = [
     path: 'profile',
     component: ProfileComponent,
     data: { title: ' Profile' }
+  },
+  {
+    path: 'archive',
+    component: ArchiveComponent,
+    data: { title: ' archive' }
   }
   
   
