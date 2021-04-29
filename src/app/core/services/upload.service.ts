@@ -24,8 +24,20 @@ import { catchError } from 'rxjs/operators';
           reportProgress: true
         }));
       }
+      public downloadFile(filename: string): Observable<HttpEvent<Blob>> {
 
-      public downloadFile(file: string): Observable<HttpEvent<Blob>> {
+        return this.httpclient.request(new HttpRequest(
+          'GET',
+          `${this.apiDownloadUrl}?filename=${filename}`,
+          null,
+          {
+            reportProgress: true,
+            responseType: 'blob'
+            
+          }));
+      
+      }
+    /*  public downloadFile(file: string): Observable<HttpEvent<Blob>> {
         return this.httpclient.request(new HttpRequest(
           'GET',
           `${this.apiDownloadUrl}?file=${file}`,
@@ -34,7 +46,7 @@ import { catchError } from 'rxjs/operators';
             reportProgress: true,
             responseType: 'blob'
           }));
-      }
+      }*/
 
     getallFiles() {
       return this.httpclient.get('https://localhost:44308/file/GetAllFiles')

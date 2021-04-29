@@ -2,6 +2,7 @@ import { ArchiveService } from './../../../core/services/archive.service';
 import { Component, OnInit} from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
+
 @Component({
   selector: 'app-archive',
   templateUrl: './archive.component.html',
@@ -17,7 +18,7 @@ export class ArchiveComponent implements OnInit {
   allfilelist;
 
   constructor( private service: ArchiveService,
-               private toastr:ToastrService, ) { }
+               private toastr:ToastrService) { }
 
   ngOnInit(): void {
 
@@ -30,7 +31,16 @@ export class ArchiveComponent implements OnInit {
     }
     );
   }
-
+  
+  restore(file){
+  
+    location.reload();
+    console.log(file)
+    this.service.restorefile(file.fileId).subscribe(res=>{});
+    this.toastr.success(file.fileName,"Restored");
+  }
+  
+  
   public deleteFile(file) 
   {
     this.collection.splice(file.fileID,1)

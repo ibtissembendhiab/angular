@@ -1,4 +1,3 @@
-import { RegisterComponent } from './../auth/register/register.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ClientRoutingModule } from './client-routing.module';
@@ -20,15 +19,9 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatSliderModule } from '@angular/material/slider';
 import { TablesComponent } from './UI-ELEMENTS/tables/tables.component';
 import { NgApexchartsModule } from "ng-apexcharts";
-import { CalendarModule, DateAdapter } from 'angular-calendar';
-import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { ContactsComponent } from './contacts/contacts.component';
 import { FilemanagerComponent } from './filemanager/filemanager.component';
 import { SettingsComponent } from './settings/settings.component';
-import { FullCalendarModule } from '@fullcalendar/angular'; // the main connector. must go first
-import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
-import interactionPlugin from '@fullcalendar/interaction'; // a plugin
-import timeGridPlugin from '@fullcalendar/timegrid';
 import { AgmCoreModule } from '@agm/core';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { HRMSComponent } from './hrms/hrms.component';
@@ -50,12 +43,9 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { CountToModule } from 'angular-count-to';
 import { FooterComponent } from './footer/footer.component';
 import { ArchiveComponent } from './archive/archive.component';
+import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.component';
 
-FullCalendarModule.registerPlugins([ // register FullCalendar plugins
-  dayGridPlugin,
-  timeGridPlugin,
-  interactionPlugin
-]);
+
 
 @NgModule({
   imports: [
@@ -80,18 +70,13 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     CountToModule,
     ToastrModule.forRoot({
     }),
-    CalendarModule.forRoot({
-      provide: DateAdapter,
-      useFactory: adapterFactory,
-    }),
     AgmCoreModule.forRoot({
       apiKey: 'GOOGLE_API_KEY'
     }),
-    FullCalendarModule,
     CKEditorModule
   ],
   declarations: [
-    ClientRoutingModule.components,
+    DashboardAdminComponent,
     HeaderComponent,
     LeftmenuComponent,
     FormElementComponent,

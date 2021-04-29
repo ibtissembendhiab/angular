@@ -84,8 +84,9 @@ export class FilemanagerComponent implements OnInit {
       this.dpgridTab = true;
     }
   }
+
   //à revoir
-  public download() {
+ /* public download() {
     this.UploadService.downloadFile(this.FileName).subscribe(
       data => {
         switch (data.type) {
@@ -111,5 +112,5 @@ export class FilemanagerComponent implements OnInit {
         
       }
     );
-  }
+  }*/
 }

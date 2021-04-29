@@ -10,7 +10,6 @@ import { ArchiveComponent} from '../client/archive/archive.component';
 import { HrDashboardComponent } from './HRMS/hr-dashboard/hr-dashboard.component';
 import { HrUsersComponent } from './HRMS/hr-users/hr-users.component';
 import { HrDepartmentsComponent } from './hrms/hr-departments/hr-departments.component';
-
 import { HRMSComponent } from './hrms/hrms.component';
 import { SearchComponent } from './search/search.component';
 import { IconFontawesomeComponent } from './UI-ELEMENTS/icons/icon-fontawesome/icon-fontawesome.component';
@@ -19,7 +18,7 @@ import { IconLinesComponent } from './UI-ELEMENTS/icons/icon-lines/icon-lines.co
 import { IconFlagsComponent } from './UI-ELEMENTS/icons/icon-flags/icon-flags.component';
 import { IconPaymentsComponent } from './UI-ELEMENTS/icons/icon-payments/icon-payments.component';
 import { GalleryComponent } from './ui-elements/gallery/gallery.component';
-
+import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.component';
 
 const routes: Routes = [
   {
@@ -113,10 +112,14 @@ const routes: Routes = [
   {
     path: 'archive',
     component: ArchiveComponent,
-    data: { title: ' archive' }
+    data: { title: ' Archive' }
+  },
+  {
+    path: 'admin',
+    component: DashboardAdminComponent,
+    data: { title: 'Admin-dashboard' }
   }
-  
-  
+
 ];
 
 @NgModule({
@@ -124,7 +127,7 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class ClientRoutingModule {
-  static components = [
-  ];
+ // static components = [
+  //];
 
 }

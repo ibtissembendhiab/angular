@@ -1,0 +1,378 @@
+<!--Header-->
+<div id="page" class="section-body top_dark">
+    <div class="container-fluid">
+        <div class="page-header">
+            <div class="left">
+                <h1 class="title" >{{title}}</h1>    
+            </div>
+            <div class="right">
+               <button type="button" class="btn  btn-outline-primary"  
+                   style="color: #fff; box-shadow: none;" data-toggle="modal"  (click)="AddModal(archivetemplate)"
+                   data-target="#archive" >
+                   <i class="fa fa-archive fa-2x"></i>Archive
+                </button> 
+                <div class="col-md-3" >
+                <button type="button" class="btn  btn-outline-primary" 
+                style="color: #fff; box-shadow: none;" data-toggle="modal"
+                data-target="#log-out" >
+                    <i class="fe fe-log-out"></i>
+                </button></div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #archivetemplate >
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">List Of Archived Files</h5>
+            <button type="button" (click)="modalRef.hide()" class="close" data-dismiss="modal" aria-label="Close"><span
+             aria-hidden="true">×</span></button>
+    </div>
+      
+   <div class="card-body  ex4">
+        <div class="file_folder">
+             <table class="table">
+                <thead>
+                    <th>#</th>
+                    <th>File Id</th>
+                    <th>File Name</th>
+                    <th>File Owner</th>
+                    <th>Action</th>         
+                </thead>
+                <tbody>
+      
+                     <tr *ngFor="let f of allfilelist; index as i" class="cursor"> 
+                        <td>{{ i + 1 }} </td>
+                        <td>{{ f.fileId}} </td>
+                        <td>{{f.fileName}}</td>
+                        <td>{{f.fileOwner}}</td> 
+                        <td>
+                         <!--  <td><i class="fas fa-trash-restore fa-2x" (click)=restore(file)></i></td> -->
+                            <button type="button" class="btn btn-icon js-sweetalert" title="Restore"
+                             data-type="confirm">-->
+                                <!-- <i class="fa fa-refresh text-danger"> </i> -->
+                           <i  class="fas fa-trash-restore fa-2x" (click)=restore(f)></i>
+                           </button>
+      
+                            <button type="button" 
+                             class="btn btn-icon js-sweetalert" title="Delete"
+                             data-type="confirm">
+                             <i (click)="deleteFile(f.fileId)" class="fa fa-trash-o text-danger"> </i>
+                           </button>
+                       </td>   
+                </tr>
+            </tbody> 
+         </table>
+    </div>
+   
+</div> 
+</ng-template>
+<br/>
+
+<!-- Body-->
+<div>
+  <div class="main-content ">
+      <div class="row">
+          <div class="col-md-6 userlistpaddingright">
+            <div >
+              <div class="card">
+                <div class="card-header" position="fixed"> 
+                   <div class="row">
+                       <div class="col-md-9" >
+                          <h4 class="card-title ">The List of Users</h4>     
+                       </div> 
+                       <div class="col-md-99" >
+                           <div class=" "><button type="button" class="btn  btn-outline-primary" data-toggle="modal" data-target="#createuser" (click)="AddModal(template)" ><i class="fa fa-user-plus "></i>Create</button></div>
+                        </div> 
+                   </div>  
+                </div>
+                <div class="card-body ">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th class="w60">#</th>
+                                    <th>User  Name</th>
+                                    <th>First  Name</th>
+                                    <th>Last  Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th class="w100">Actions</th>
+                                </tr>
+                             </thead>
+                               <tbody>
+                                    <tr *ngFor="let e of li; index as i">
+                                     <td>{{ i+1 }}</td>
+                                     <td>{{ e.UserName }}</td>
+                                     <td>{{ e.FirstName }}</td>
+                                     <td>{{ e.LastName }}</td>
+                                     <td>{{ e.Email }}</td>
+                                     <td>{{ e.Roles[0] }}</td>
+                                        <td>
+                                            <button type="button" 
+                                               class="btn btn-icon" title="Edit" data-type="confirm">
+                                               <i class="fa fa-edit"></i>
+                                            </button>
+                                       
+                                         <!--(click)="sweettalert7()"-->
+                                           <button type="button" 
+                                              class="btn btn-icon js-sweetalert" title="Delete"
+                                              data-type="confirm">
+                                              <i (click)="removeuser(e.user)" class="fa fa-trash-o "> </i>  <!--class="far fa-trash-alt"-->
+                                           </button>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          </div>
+ <!--   formulaire registration : -->
+ <ng-template #template>
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add New User</h5>
+        <button type="button" (click)="modalRef.hide()" class="close" data-dismiss="modal" aria-label="Close"><span
+                aria-hidden="true">×</span></button>
+    </div>
+    <div class="card cardCollapsible">
+        <div class="card-body">
+            <div class="modal-body">
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">  
+                    <div class=" col-lg-30 col-md-15 col-sm-12">
+                        <div class="form-group">
+                            <label class="form-label">First Name</label>
+                           <input 
+                            class=" form-control"
+                            placeholder="First Name"
+                            type="text"
+                            formControlName="FirstName"
+                            [ngClass]="{ 'is-invalid': submitted && f.FirstName.errors }"
+                           />
+                        </div>
+                   </div>
+                   <div class=" col-lg-30 col-md-15 col-sm-12">
+                    <div class="form-group">
+                        <label class="form-label">Last Name</label>
+                        <input 
+                        class=" form-control"
+                        placeholder="Last Name"
+                        type="text"
+                        formControlName="LastName"
+                        [ngClass]="{ 'is-invalid': submitted && f.LastName.errors }"
+                      />
+                   </div>
+               </div>
+                <div class=" col-lg-15 col-md-15 col-sm-12">
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input
+                        class=" form-control"
+                        placeholder="Email"
+                        type="email"
+                        formControlName="Email"
+                        [ngClass]="{ 'is-invalid': submitted && f.Email.errors }"
+                      />
+                    </div>
+                </div>
+
+                <div class=" col-lg-30 col-md-15 col-sm-12">
+                     <div class="form-group">
+                         <label class="form-label">User Name</label>
+                         <input 
+                         class=" form-control"
+                         placeholder="User Name"
+                         type="text"
+                         formControlName="UserName"
+                         [ngClass]="{ 'is-invalid': submitted && f.UserName.errors }"
+                       />
+                    </div>
+                </div>
+               
+                <div class=" col-lg-60 col-md-60 col-sm-12">
+                  <div class="form-group">
+                       <label class="form-label">Password</label>
+                       <input
+                       class=" form-control"
+                       placeholder="Password"
+                       type="password"
+                       value=""
+                       formControlName="Password"
+                       [ngClass]="{ 'is-invalid': submitted && f.Password.errors }"
+                       
+                   />
+                </div>
+                </div> 
+
+                <div class=" col-lg-30 col-md-15 col-sm-12">
+                    <div class="form-group">
+                        <label class="form-label">Role</label>
+                        <input 
+                        class=" form-control"
+                        placeholder="Enter role Admin/Employee"
+                        type="text"
+                        formControlName="Role"
+                        [ngClass]="{ 'is-invalid': submitted && f.Role.errors }"
+                      />
+                   </div>
+               </div>
+              
+                <div  class="text-center">
+                  <button type="submit" class="btn btn-primary"  data-dismiss="modal" >Create new account</button>
+                  <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+                </div>
+            </form>
+          </div>
+        </div>
+    </div>
+</ng-template>
+<!--fin formulaire registration -->
+
+            <div class="col-md-6 grouplistpaddingright">
+                <div class="padright">
+                  <div class="card ">
+                    <div class="card-header" position="fixed" >
+                        <div class="row">
+                            <div >
+                                <h4 class="card-title ">The List Of Groups</h4>
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="card-body ex4">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">  
+                                  <th>Id</th>
+                                  <th> Group Name</th>
+                                  <th>Group Owner</th>
+                                  <th>Creation date</th>
+                                  <th>Description</th>
+                                  <th>Options</th>
+                                <tbody>
+                                  <!--  <tr  *ngFor="let group of listgroups ; index as i" (click)=displayusersingroupselected(group) class="cursor">
+                                        <td >{{group.groupID}} </td>
+                                        <td>{{group.groupName}} </td>
+                                        <td>{{(group.groupOwner)?.userName}} </td>
+                                        <td >{{group.createdDate}}</td>
+                                        <td> {{group.groupDesc}} </td>
+                                        <td><i class="fas fa-minus-circle" (click)=removegroup(group)  ></i> &nbsp;&nbsp;<i class="fa fa-edit" style="color:rgb(39, 42, 231);"></i></td>
+                                    </tr>-->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                   
+                </div>
+    
+              </div>
+              </div>
+              
+          </div>
+               
+        </div>
+
+     
+<div class="row">
+<div class="col-md-6 userlistpaddingright">
+    <div class=" ">
+      <div class="card">
+        <div class="card-header  " position="fixed">
+            <h4 class="card-title "><span style="color:rgb(52, 173, 147)"> </span>  library users list  </h4> 
+            <p class="card-category">  </p>
+            
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                        <thead class=" text-primary">
+                         <th>#</th>
+                         <th> Last name </th>
+                         <th> First name</th>
+                         <th> User Name </th>
+                         <th> Email </th>
+                         <th> Options </th>
+                     
+                        </thead>
+                    <tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+ </div>
+
+  </div>
+
+
+
+  <div class="col-md-6 userlistpaddingright">
+    <div class=" ">
+      <div class="card">
+        <div class="card-header  " position="fixed">
+            <h4 class="card-title "><span style="color:rgb(235, 139, 49)"></span> Documents </h4> 
+ 
+                <div class=" ">
+                        <div >
+                            <li>
+                                <span class="design pointer"   >   </span>
+                            </li>
+                        </div>
+                 </div>
+      
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class=" text-primary">
+                     
+                        <th> #</th>  
+                        <th>Name </th>
+                        <th>Owner </th>
+                        <th> Size </th>
+                        <th>Options</th>
+                         
+                    </thead>
+                    <tbody>
+                        <!-- (dblclick)="openfolder(folder)"(click)="displaydetailfolder(folder) -->
+                        <!-- <i class="fas fa-folder"></i>  -->
+                       <!--<tr  *ngFor="let folder of folders ; index as i" class="cursor"  (click)="openfolder(folder)"  >
+                            <td><i class="fas fa-folder"></i></td>
+                            <td>{{folder.folderName}}</td>
+                            <td>folder</td>
+                            <td>{{(folder.folderOwner)?.userName}}</td>
+                            <td>{{folder.createdDate}}</td>
+                            <td>{{folder.folderSize}}</td>
+                            <td></td>
+                          </tr> -->
+
+                           <i class="far fa-file-alt"></i>
+                           <tr *ngFor="let f of allfilelist; index as i" > 
+                           <td> {{ i + 1 }}</td>
+                           <td>{{f.fileName}} </td> 
+                           <td>{{f.fileOwner}}</td>
+                           <td>{{f.fileSize}}</td>
+                           <td>
+                            <button type="button" 
+                            class="btn btn-icon" title="Archive" data-type="confirm">
+                            <i class="fa fa-archive text-danger" (click)=archivefile(f)></i></button>
+
+                            <button type="button" 
+                            class="btn btn-icon" title="Download" data-type="confirm">
+                            <i (click)="download()" class="fa fa-download text-danger"></i></button>
+                            
+                            <button type="button" 
+                            class="btn btn-icon js-sweetalert" title="Delete"
+                            data-type="confirm">
+                            <i   (click)="deleteFile(f.fileId)" class="fa fa-trash-o text-danger"> </i>  <!--class="far fa-trash-alt"-->
+                           </button>
+                           </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+ </div>
+
+  </div>
+</div>

@@ -20,9 +20,9 @@ import Swal from 'sweetalert2'
 export class HrUsersComponent implements OnInit {
 
  // @Input()
- li:any;
- lis=[];
-
+  li:any;
+  lis=[];
+  
   loading = false;
   submitted = false;
   contactTab: boolean;

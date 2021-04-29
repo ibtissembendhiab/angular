@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'auth', loadChildren: './modules/auth/auth.module#AuthModule' },
   { path: 'client', loadChildren: './modules/client/client.module#ClientModule' },
  // { path: '', pathMatch: 'full', redirectTo: '/hr-dashboard' },
-  { path: '**', redirectTo: '/hr-dashboard' },
+  { path: 'admin', redirectTo: '/admin-dashboard' },
 ];
 
 @NgModule({

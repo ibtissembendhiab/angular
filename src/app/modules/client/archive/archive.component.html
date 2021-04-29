@@ -37,7 +37,7 @@
                                     </thead>
                                      <tbody>
 
-                                       <tr *ngFor="let f of allfilelist; index as i" > 
+                                       <tr *ngFor="let f of allfilelist; index as i" class="cursor"> 
                                         <td> 
                                             {{ i + 1 }}
                                         </td>
@@ -53,20 +53,21 @@
                                        </td> 
 
                                        <td>
-                                      
+                                      <!--  <td><i class="fas fa-trash-restore fa-2x" (click)=restore(file)></i></td> -->
                                         <button type="button" class="btn btn-icon js-sweetalert" title="Restore"
                                         data-type="confirm">
-                                        <i class="fa fa-refresh text-danger"> </i>
+                                       <!-- <i class="fa fa-refresh text-danger"> </i> -->
+                                       <i  class="fas fa-trash-restore fa-2x" (click)=restore(f)></i>
                                         </button>
 
                                         <button type="button" 
                                         class="btn btn-icon js-sweetalert" title="Delete"
                                         data-type="confirm">
                                         <i (click)="deleteFile(f.fileId)" class="fa fa-trash-o text-danger"> </i>
-                                    </button>
+                                     </button>
                                        </td>
                                         
-                                    </tr>
+                                     </tr>
                                      </tbody> 
                                 </table>
                             </div>

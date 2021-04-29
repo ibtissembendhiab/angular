@@ -15,7 +15,12 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     FormsModule, 
     ReactiveFormsModule
   ],
-  declarations: [AuthRoutingModule.components, LoginComponent, ForgotPasswordComponent, RegisterComponent],
+  declarations: [
+     AuthRoutingModule.components, 
+     LoginComponent,
+     ForgotPasswordComponent,
+     RegisterComponent,
+     ],
   providers: []
 })
 export class AuthModule { }
