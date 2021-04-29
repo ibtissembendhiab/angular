@@ -162,7 +162,7 @@ export class HrUsersComponent implements OnInit {
   }
 
   //Delete User 
- /* public deleteUser(user) 
+  /*public deleteUser(user) 
   {
     this.collection.splice(user.id,1)
     this.Service.deleteUser(user).subscribe(UserList=>{
@@ -171,7 +171,5 @@ export class HrUsersComponent implements OnInit {
     })
 
   }*/
-
-  
 
 }
