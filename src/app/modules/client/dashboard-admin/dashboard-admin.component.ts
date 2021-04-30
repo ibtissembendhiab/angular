@@ -10,6 +10,7 @@ import { ArchiveService } from 'src/app/core/services/archive.service';
 import { SignupService } from 'src/app/core/services/signup.service';
 import { UploadService } from 'src/app/core/services/upload.service';
 import { UserService } from 'src/app/core/services/user.service';
+import { group } from 'src/app/shared/group.model';
 import { ProgressStatus, ProgressStatusEnum } from './progresststatus.model';
 
 @Component({
@@ -44,15 +45,21 @@ export class DashboardAdminComponent implements OnInit {
   public collection:any= [];
   loading: boolean;
   allfilelist;
-  li:any;
-  lis=[];
+  li;
+  public lis:any=[];
   submitted = false;
+  public coll:any= [];
+  allarchivedfilelist;
+  public folders:any=[];
+  allfolderlist;
+  lg;
+public listgroup:group[]
   
-  constructor(private Service :AdminService,
+  constructor(private adminService :AdminService,
      private UploadService : UploadService,   
      public toastr: ToastrService,
      private router: Router,
-     private service: ArchiveService,
+     private archiveService: ArchiveService,
      private registerService: SignupService,
      private formBuilder: FormBuilder ,
      private modalService: BsModalService) 
@@ -60,7 +67,11 @@ export class DashboardAdminComponent implements OnInit {
       this.downloadStatus = new EventEmitter<ProgressStatus>();
      }
      modalRef: BsModalRef;
+
   ngOnInit(): void {
+
+    this.title="Admin Dashboard";
+
        this.registerForm = this.formBuilder.group({
        FirstName: this.FirstName,
        LastName: this.LastName,
@@ -68,36 +79,56 @@ export class DashboardAdminComponent implements OnInit {
        UserName: this.UserName,
        Password: this.Password,
        Role : this.Role,
+     })
+
+     this.adminService.getallgroups().subscribe(Response => {
+      console.log(Response)
+        this.listgroup=Response;
+      this.listgroup=this.lg.list; 
+       console.log(this.lg);
      });
-
-    this.title="Admin Dashboard";
-
+     
     this.UploadService.getallFiles().subscribe
     (FileList=> {
       console.log(FileList)
       this.allfilelist=FileList;
       this.collection= FileList;
       console.log(this.collection)
-    });
+    })
 
-    this.Service.getAll().subscribe(Response => {
-      console.log(Response)
+    this.archiveService.getallFilesArchived().subscribe
+    (ArchivedFileList=> {
+      console.log(ArchivedFileList)
+      this.allarchivedfilelist=ArchivedFileList;
+      this.coll= ArchivedFileList;
+      console.log(this.coll)
+    })
+
+    this.adminService.getAll().subscribe(UserList => {
+      console.log(UserList)
       // If response comes hideloader() function is called
       // to hide that loader 
-      // if(Response){  
-      //   hideloader();
-      // } 
-      this.li=Response;
-      this.lis=this.li.list; 
-      console.log(this.li);
-    });
+      if(UserList){  
+       hideloader();
+       } 
+      this.li=UserList;
+      this.lis=UserList; 
+      console.log(this.lis);
+    })
+    function hideloader(){
+      document.getElementById('loading').style.display = 'block';}
   }
 
- 
+  removegroup(group:group){
+    this.adminService.deletegroup(group.groupId).subscribe(res=>res)
+    //this.openSnackBar(group.GroupName,"Removed ");  
+    location.reload();
+    
+    }
   public removeuser(user) 
   {
     this.collection.splice(user.id,1)
-    this.Service.deleteUser(user).subscribe(UserList=>{
+    this.adminService.deleteUser(user).subscribe(UserList=>{
     console.log("user Deleted",FileList),
     this.toastr.success('User Deleted')
     })
@@ -141,7 +172,7 @@ restore(file){
   
   location.reload();
   console.log(file)
-  this.service.restorefile(file.fileId).subscribe(res=>{});
+  this.archiveService.restorefile(file.fileId).subscribe(res=>{});
   this.toastr.success(file.fileName,"Restored");
 }
 public deleteFile(file){
@@ -153,7 +184,7 @@ public deleteFile(file){
   }
 
   archivefile(file){
-    this.Service.Archivefile(file.fileid).subscribe(res =>{
+    this.adminService.Archivefile(file.fileid).subscribe(res =>{
       console.log(res)
       this.toastr.success("Archived")
       error => {
@@ -166,7 +197,6 @@ public deleteFile(file){
   public download() {
 
     console.log("this is file name"+this.fileName)
-
     this.downloadStatus.emit( {status: ProgressStatusEnum.START});
 
     this.UploadService.downloadFile(this.fileName).subscribe(
@@ -190,7 +220,7 @@ public deleteFile(file){
         }
       },
       error => {
-        this.downloadStatus.emit( {status: ProgressStatusEnum.ERROR});
+        this.downloadStatus.emit({status: ProgressStatusEnum.ERROR});
       }
     );
   }

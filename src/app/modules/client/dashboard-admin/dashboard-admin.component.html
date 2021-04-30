@@ -26,37 +26,32 @@
         <h5 class="modal-title" id="exampleModalLabel">List Of Archived Files</h5>
             <button type="button" (click)="modalRef.hide()" class="close" data-dismiss="modal" aria-label="Close"><span
              aria-hidden="true">×</span></button>
-    </div>
-      
+            </div>
    <div class="card-body  ex4">
         <div class="file_folder">
              <table class="table">
                 <thead>
                     <th>#</th>
-                    <th>File Id</th>
                     <th>File Name</th>
                     <th>File Owner</th>
                     <th>Action</th>         
                 </thead>
                 <tbody>
       
-                     <tr *ngFor="let f of allfilelist; index as i" class="cursor"> 
+                     <tr *ngFor="let af of allarchivedfilelist; index as i" class="cursor"> 
                         <td>{{ i + 1 }} </td>
-                        <td>{{ f.fileId}} </td>
-                        <td>{{f.fileName}}</td>
-                        <td>{{f.fileOwner}}</td> 
+                        <td>{{af.fileName}}</td>
+                        <td>{{af.fileOwner}}</td> 
                         <td>
-                         <!--  <td><i class="fas fa-trash-restore fa-2x" (click)=restore(file)></i></td> -->
                             <button type="button" class="btn btn-icon js-sweetalert" title="Restore"
-                             data-type="confirm">-->
-                                <!-- <i class="fa fa-refresh text-danger"> </i> -->
-                           <i  class="fas fa-trash-restore fa-2x" (click)=restore(f)></i>
+                             data-type="confirm">
+                             <i  class="fa fa-refresh" (click)=restore(af.fileId)></i>
                            </button>
       
                             <button type="button" 
                              class="btn btn-icon js-sweetalert" title="Delete"
                              data-type="confirm">
-                             <i (click)="deleteFile(f.fileId)" class="fa fa-trash-o text-danger"> </i>
+                             <i (click)="deleteFile(af.fileId)" class="fa fa-trash-o text-danger"> </i>
                            </button>
                        </td>   
                 </tr>
@@ -80,6 +75,18 @@
                        <div class="col-md-9" >
                           <h4 class="card-title ">The List of Users</h4>     
                        </div> 
+                       <div class="card-options">
+                        <form>
+                            <div class="input-group">
+                                <input type="text" class="form-control form-control-sm"
+                                    placeholder="Search something..." name="s">
+                                <span class="input-group-btn ml-2"><button class="btn btn-sm btn-default"
+                                        type="submit"><span class="fe fe-search">
+                                        </span></button></span>
+                            </div>
+                        </form>
+                        <br/>
+                    </div>
                        <div class="col-md-99" >
                            <div class=" "><button type="button" class="btn  btn-outline-primary" data-toggle="modal" data-target="#createuser" (click)="AddModal(template)" ><i class="fa fa-user-plus "></i>Create</button></div>
                         </div> 
@@ -87,7 +94,7 @@
                 </div>
                 <div class="card-body ">
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table table-hover table-vcenter  mb-0">
                             <thead class=" text-primary">
                                 <tr>
                                     <th class="w60">#</th>
@@ -102,22 +109,21 @@
                                <tbody>
                                     <tr *ngFor="let e of li; index as i">
                                      <td>{{ i+1 }}</td>
-                                     <td>{{ e.UserName }}</td>
-                                     <td>{{ e.FirstName }}</td>
-                                     <td>{{ e.LastName }}</td>
-                                     <td>{{ e.Email }}</td>
-                                     <td>{{ e.Roles[0] }}</td>
+                                     <td>{{ e.userName }}</td>
+                                     <td>{{ e.firstName }}</td>
+                                     <td>{{ e.lastName }}</td>
+                                     <td>{{ e.email }}</td>
+                                     <td>{{ e.roles[2] }}</td>
                                         <td>
                                             <button type="button" 
                                                class="btn btn-icon" title="Edit" data-type="confirm">
                                                <i class="fa fa-edit"></i>
                                             </button>
-                                       
-                                         <!--(click)="sweettalert7()"-->
+                                    
                                            <button type="button" 
                                               class="btn btn-icon js-sweetalert" title="Delete"
-                                              data-type="confirm">
-                                              <i (click)="removeuser(e.user)" class="fa fa-trash-o "> </i>  <!--class="far fa-trash-alt"-->
+                                              data-type="confirm" (click)="removeuser(e.user)" >
+                                              <i  class="fa fa-trash-o "> </i> 
                                            </button>
                                         </td>
                                     </tr>
@@ -243,21 +249,24 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class=" text-primary">  
-                                  <th>Id</th>
-                                  <th> Group Name</th>
+                                  <th>#</th>
+                                  <th> Group Name </th>
                                   <th>Group Owner</th>
-                                  <th>Creation date</th>
-                                  <th>Description</th>
-                                  <th>Options</th>
+                                  <th>  Date of Create  </th>
+                                  <th>  Description  </th>
+                                  <th>  Options</th>
                                 <tbody>
-                                  <!--  <tr  *ngFor="let group of listgroups ; index as i" (click)=displayusersingroupselected(group) class="cursor">
-                                        <td >{{group.groupID}} </td>
-                                        <td>{{group.groupName}} </td>
-                                        <td>{{(group.groupOwner)?.userName}} </td>
-                                        <td >{{group.createdDate}}</td>
-                                        <td> {{group.groupDesc}} </td>
-                                        <td><i class="fas fa-minus-circle" (click)=removegroup(group)  ></i> &nbsp;&nbsp;<i class="fa fa-edit" style="color:rgb(39, 42, 231);"></i></td>
-                                    </tr>-->
+                                   <tr  *ngFor="let g of listgroup ; index as i" class="cursor">
+                                        <td >{{g.groupId}} </td>
+                                        <td>{{g.groupName}} </td>
+                                        <td>{{(g.groupOwner)?.userName}} </td>
+                                        <td >{{g.createdDate}}</td>
+                                        <td> {{g.description}} </td>
+                                        <td><button type="button" 
+                                            class="btn btn-icon" title="Delete" data-type="confirm" >
+                                             <i class="fa fa-minus-circle" (click)=removegroup(g)  ></i> </button>
+                                            &nbsp;&nbsp;</td>   
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -282,7 +291,7 @@
             <p class="card-category">  </p>
             
         </div>
-        <div class="card-body">
+        <div class="card-body ex4">
             <div class="table-responsive">
                 <table class="table">
                         <thead class=" text-primary">
@@ -320,7 +329,7 @@
                  </div>
       
         </div>
-        <div class="card-body">
+        <div class="card-body ex4">
             <div class="table-responsive">
                 <table class="table">
                     <thead class=" text-primary">
@@ -335,7 +344,7 @@
                     <tbody>
                         <!-- (dblclick)="openfolder(folder)"(click)="displaydetailfolder(folder) -->
                         <!-- <i class="fas fa-folder"></i>  -->
-                       <!--<tr  *ngFor="let folder of folders ; index as i" class="cursor"  (click)="openfolder(folder)"  >
+                          <tr  *ngFor="let folder of folders ; index as i" class="cursor" >
                             <td><i class="fas fa-folder"></i></td>
                             <td>{{folder.folderName}}</td>
                             <td>folder</td>
@@ -343,7 +352,7 @@
                             <td>{{folder.createdDate}}</td>
                             <td>{{folder.folderSize}}</td>
                             <td></td>
-                          </tr> -->
+                          </tr>
 
                            <i class="far fa-file-alt"></i>
                            <tr *ngFor="let f of allfilelist; index as i" > 
@@ -354,7 +363,7 @@
                            <td>
                             <button type="button" 
                             class="btn btn-icon" title="Archive" data-type="confirm">
-                            <i class="fa fa-archive text-danger" (click)=archivefile(f)></i></button>
+                            <i class="fa fa-archive text-danger" (click)=archivefile(f.fileId)></i></button>
 
                             <button type="button" 
                             class="btn btn-icon" title="Download" data-type="confirm">

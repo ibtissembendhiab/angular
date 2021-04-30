@@ -45,43 +45,25 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Group Name</th>
+                                            <th>Description</th>
                                             <th>Group Owner</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                       
-                                
-                                        <tr>
-                                            <td>03</td>
-                                            <td>
-                                                <div class="font-15">App Development</div>
-                                            </td>
-                                            <td>Frank Camly</td>
-                                           
-                                            <td>
-                                                <button type="button" class="btn btn-icon" title="Edit"><i
-                                                        class="fa fa-edit"></i></button>
-                                                <button type="button" class="btn btn-icon js-sweetalert" title="Delete"
-                                                    data-type="confirm"><i
-                                                        class="fa fa-trash-o text-danger"></i></button>
+                                        <tr *ngFor="let g of listgroup ; index as i" >
+                                            <td>{{ i+1 }}</td>
+                                            <td>{{ g.groupName }}</td>
+                                            <td>{{ g.description }}</td>
+                                            <td>{{ g.groupOwner  }}</td>
+                                            <td>  
+                                                 <button type="button"
+                                                    class="btn btn-icon js-sweetalert" title="Join"
+                                                    data-type="confirm">
+                                                    <i  class="fa fa-user-plus text-danger"> </i>
+                                                </button>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>04</td>
-                                            <td>
-                                                <div class="font-15">Support</div>
-                                            </td>
-                                            <td>Gary Camara</td>
-                                            <td>
-                                                <button type="button" class="btn btn-icon" title="Edit"><i
-                                                        class="fa fa-edit"></i></button>
-                                                <button type="button" class="btn btn-icon js-sweetalert" title="Delete"
-                                                    data-type="confirm"><i
-                                                        class="fa fa-trash-o text-danger"></i></button>
-                                            </td>
-                                        </tr>
-                                       
                                     </tbody>
                                 </table>
                             </div>
@@ -145,20 +127,14 @@
                     </div>
 
                     <label>Description</label>
-                    <input type="text"  formControlName="groupDesc"  class="form-control heightdesc"
-                     [ngClass]="{ 'is-invalid': submittedgroup && fgroup.groupDesc.errors }"  />
-                    <div *ngIf="submittedgroup && fgroup.groupDesc.errors" class="invalid-feedback">
-                        <div *ngIf="fgroup.groupDesc.errors.required">Group Description is required</div>
+                    <input type="text"  formControlName="description"  class="form-control heightdesc"
+                     [ngClass]="{ 'is-invalid': submittedgroup && fgroup.description.errors }"  />
+                    <div *ngIf="submittedgroup && fgroup.description.errors" class="invalid-feedback">
+                        <div *ngIf="fgroup.Description.errors.required">Group Description is required</div>
                     </div>
                  
-                </div> 
-             
-          
-          
-             
+                </div>
             </div>
-          
-          
             <div class="text-center">
                 <button class="btn btn-primary" type="button"  (click)="onSubmitcreatefolder()"   data-dismiss="modal" >Create group</button>
                 <button class="btn btn-secondary" type="reset" (click)="onResetforgroup()"  >Cancel</button>

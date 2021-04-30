@@ -2,7 +2,10 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { ToastrService } from 'ngx-toastr';
+import { AdminService } from 'src/app/core/services/admin.service';
 import { UserService } from 'src/app/core/services/user.service';
+import { group } from 'src/app/shared/group.model';
 
 @Component({
   selector: 'app-hr-departments',
@@ -14,20 +17,30 @@ export class HrDepartmentsComponent implements OnInit {
   dpgridTab: boolean;
   groupform:FormGroup;
   submittedgroup=false;
-
+  listgroup:group[]=[];
+  lg:any;
 
   constructor(private modalService: BsModalService,private formBuilder: FormBuilder ,
-    private router:Router, private route:ActivatedRoute, private userservice: UserService) { }
+    private router:Router, private route:ActivatedRoute,private toastr: ToastrService, 
+    private adminService: AdminService,
+    private userservice: UserService) { }
   modalRef: BsModalRef;
 
   ngOnInit(): void {
     this.checkgroupname();
+
+     this.adminService.getallgroups().subscribe(Response => {
+     console.log(Response)
+       this.listgroup=Response;
+     this.listgroup=this.lg.list; 
+      console.log(this.lg);
+    });
   }
 
   checkgroupname(){
     this.groupform = this.formBuilder.group({
       groupName: ['', Validators.required],
-      groupDesc: ['',Validators.required]
+      description: ['',Validators.required]
     })
      
   }
@@ -37,18 +50,18 @@ export class HrDepartmentsComponent implements OnInit {
     this.submittedgroup = true;
   
     if (this.groupform.invalid) {
-        return;
+       // return this.toastr.error("error");
     }
-  
-    this.userservice.CreateGroup(this.groupform.value).subscribe( );
-   
-    location.reload();
+    this.userservice.CreateGroup(this.groupform.value).subscribe();
+    // this.toastr.success("Group added successfully");
+     location.reload();
   }
-  
-  onResetforgroup() {
+    
+    onResetforgroup() {
     this.submittedgroup = false;
     this.groupform.reset();
   }
+
   get fgroup() { return this.groupform.controls; }
   
 
@@ -62,6 +75,9 @@ export class HrDepartmentsComponent implements OnInit {
       this.dpgridTab = true;
     }
   }
+ //displaygroups(){
+  //this.adminService.getallgroups().subscribe((res)=>{this.listgroup = res ;})
+ //}
 
   AddModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(

@@ -72,17 +72,17 @@ export class HrUsersComponent implements OnInit {
        Role : this.Role,
      })
 
-     this.Service.getAll().subscribe(Response => {
-      console.log(Response)
-      // If response comes hideloader() function is called
-      // to hide that loader 
-      // if(Response){  
-      //   hideloader();
-      // } 
-      this.li=Response;
-      this.lis=this.li.list; 
-      console.log(this.li);
-    });
+     ///this.Service.getAll().subscribe(Response => {
+     // console.log(Response)
+      //// If response comes hideloader() function is called
+     // // to hide that loader 
+      //// if(Response){  
+      ////   hideloader();
+      //// } 
+     // this.li=Response;
+     // this.lis=this.li.list; 
+      //console.log(this.li);
+    //});
     function hideloader(){
       document.getElementById('loading').style.display = 'block';}
   }
