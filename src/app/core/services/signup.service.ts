@@ -21,7 +21,7 @@ export class SignupService {
   })
 
   register(signup: Signup ) {
-    return this.http.post(this.BaseURI +'/Register',signup);
+    return this.http.post<any>(this.BaseURI +'/Register',signup);
 }
 
 deleteUser(IDuser)

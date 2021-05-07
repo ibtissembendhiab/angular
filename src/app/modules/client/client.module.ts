@@ -14,7 +14,6 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ToastrModule } from 'ngx-toastr';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
-import { FormElementComponent } from './form-element/form-element.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatSliderModule } from '@angular/material/slider';
 import { TablesComponent } from './UI-ELEMENTS/tables/tables.component';
@@ -44,6 +43,9 @@ import { CountToModule } from 'angular-count-to';
 import { FooterComponent } from './footer/footer.component';
 import { ArchiveComponent } from './archive/archive.component';
 import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptorService } from 'src/app/core/services/token-interceptor.service';
+import { AuthGuard } from 'src/app/core/services/auth.guard';
 
 
 
@@ -79,7 +81,6 @@ import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.compo
     DashboardAdminComponent,
     HeaderComponent,
     LeftmenuComponent,
-    FormElementComponent,
     TablesComponent,
     ContactsComponent,
     FilemanagerComponent,
@@ -103,7 +104,13 @@ import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.compo
     FooterComponent,
     ArchiveComponent,
   ],
-  providers: [BsDatepickerModule]
+  providers: [BsDatepickerModule, AuthGuard,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }
+]
 })
 
 export class ClientModule { }

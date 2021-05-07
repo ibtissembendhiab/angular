@@ -5,7 +5,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import { AdminService } from 'src/app/core/services/admin.service';
 import { UserService } from 'src/app/core/services/user.service';
-import { group } from 'src/app/shared/group.model';
+import { group } from 'src/app/shared/models/group.model';
 
 @Component({
   selector: 'app-hr-departments',

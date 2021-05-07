@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { LoginService } from 'src/app/core/services/login.service';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,8 @@ export class HeaderComponent implements OnInit {
   groupTab: boolean;
   chatTab: boolean = true;
   title: any
-  constructor(private route: Router) {
+  constructor(private route: Router,
+    public loginService: LoginService) {
     this.title = route.url;
     debugger
     this.title = this.title.replace(/\//g, '');
@@ -80,5 +82,9 @@ export class HeaderComponent implements OnInit {
       this.contactTab = true;
     }
   }
+
+  logout() {
+    this.loginService.logout();
+}
 
 }

@@ -3,231 +3,88 @@
 <div class="page">
     <app-header></app-header>
     <div class="section-body">
-        <div class="container-fluid">
-            <div class="d-flex justify-content-between align-items-center">
-                <ul class="nav nav-tabs page-header-tab">
-                    <li class="nav-item"><a class="nav-link active" id="user-tab" data-toggle="tab"
-                            href="javascript:void(0)" (click)="onTab('1')" [ngClass]="{'active': chatTab}">Users List</a>
-                    </li>
-                </ul>
-                <!--Button el jdid
-                <div class="header-action">
-                    <button type="button" class="btn btn-primary" (click)="AddModal(template)" data-toggle="modal"
-                        data-target="#exampleModal"><i class="fe fe-plus mr-2"></i>Add New</button>
-                </div>-->
-                <!--Button el 9dim-->
-               <div class="header-action">
-                  <a class="nav-link" id="user-tab" data-toggle="tab" href="javascript:void(0)"
-                  (click)="onTab('2')" [ngClass]="{'active': contactTab}"> Add New </a>
+
+        <div class="col-md-4 ">
+            <div class="card card-profile">
+                <div class="card-avatar">
+                    <a href="javascript:void(0)">
+                        <img class="img" src="./assets/images/sm/avatar6.jpg" />
+                    </a>
+                </div>
+                <div class="card-body">
+                   
+                    <h4 class="card-title">User</h4>
+                    <p class="card-description">
+                       Here you can write your information 
+                    </p>
+                   
                 </div>
             </div>
         </div>
-    </div>
-    <div class="section-body mt-3">
+
+      <div class="position">
         <div class="container-fluid">
-            <div class="tab-content mt-3">
-                <div class="tab-pane fade" [ngClass]="{'show active': chatTab}" id="user-list" role="tabpanel">
-                   <div class="card">
-                        <div class="card-header">
-                            <h3 class="card-title">Users List</h3>
-                            <div class="card-options">
-                                <form>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control form-control-sm"
-                                            placeholder="Search something..." name="s">
-                                        <span class="input-group-btn ml-2"><button class="btn btn-sm btn-default"
-                                                type="submit"><span class="fe fe-search">
-                                                </span></button></span>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                               <table class="table table-striped table-hover table-vcenter text-nowrap mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th class="w60">#</th>
-                                            <th>UserName</th>
-                                            <th>FirstName</th>
-                                            <th>LastName</th>
-                                            <th>Email</th>
-                                            <th>Role</th>
-                                            <th class="w100">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr *ngFor="let e of li; index as i">
-                                            <td>{{ i+1 }}</td>
-                                            <td>{{ e.userName }}</td>
-                                            <td>{{ e.firstName }}</td>
-                                            <td>{{ e.lastName }}</td>
-                                            <td>{{ e.email }}</td>
-                                            <td>{{ e.roles }}</td>
-                                            <td>
-                                              <button type="button" 
-                                                       class="btn btn-icon" title="Edit" data-type="confirm">
-                                                       <i class="fa fa-edit"></i></button>
-                                               
-                                                    <!--(click)="sweettalert7()"-->
-                                                    <button type="button" (click)="sweettalert7()"
-                                                    class="btn btn-icon js-sweetalert" title="Delete"
-                                                    data-type="confirm">
-                                                    <i  class="fa fa-trash-o text-danger"> </i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    
-                                    
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div> 
-                </div>
-                 
-               <!--Update profile pas pour l'admin 
+            
+                    <div class="row clearfix">
+                        <div >   
+                            <h3 class="title">Update Profile</h3> <br/>
+                            <div class="card">
+                             
+                                <div class="card-header card-header-danger">
+                                    <p class="card-category">Complete your profile</p>
+                                </div>
+                                <div class="card-body">
+                                    <form>
 
-                <ng-template #template>
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Update User</h5>
-                        <button type="button" (click)="modalRef.hide()" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">×</span></button>
-                    </div>
-                
-                    <div class="modal-body">
-                        <div class="row clearfix">
-                            <div class="col-md-12">
-                              
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="First Name">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Last Name">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="User Name">
-                                </div>
-                            </div> 
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Email">
-                                </div>
-                            </div> 
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Password">
-                                </div>
-                            </div> 
-                        </div>
-                   </div>
-                
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </ng-template>  -->
-
-           <!--   formulaire registration : -->
-                <div class="tab-pane fade" [ngClass]="{'show active': contactTab}" id="user-add" role="tabpanel">
-                    <div class="card cardCollapsible">
-                        <div class="card-body">
-                            <div class="row clearfix">
-                                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">  
-
-                                    <div class=" col-lg-30 col-md-15 col-sm-12">
-                                        <div class="form-group">
-                                            <label class="form-label">First Name</label>
-                                           <input 
-                                            class=" form-control"
-                                            placeholder="First Name"
-                                            type="text"
-                                            formControlName="FirstName"
-                                            [ngClass]="{ 'is-invalid': submitted && f.FirstName.errors }"
-                                           />
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="First Name">
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Last Name">
+                                                </div>
+                                            </div>
                                         </div>
-                                   </div>
-                                   <div class=" col-lg-30 col-md-15 col-sm-12">
-                                    <div class="form-group">
-                                        <label class="form-label">Last Name</label>
-                                        <input 
-                                        class=" form-control"
-                                        placeholder="Last Name"
-                                        type="text"
-                                        formControlName="LastName"
-                                        [ngClass]="{ 'is-invalid': submitted && f.LastName.errors }"
-                                      />
-                                   </div>
-                               </div>
-                                <div class=" col-lg-15 col-md-15 col-sm-12">
-                                    <div class="form-group">
-                                        <label class="form-label">Email</label>
-                                        <input
-                                        class=" form-control"
-                                        placeholder="Email"
-                                        type="email"
-                                        formControlName="Email"
-                                        [ngClass]="{ 'is-invalid': submitted && f.Email.errors }"
-                                      />
-                                    </div>
-                                </div>
 
-                                <div class=" col-lg-30 col-md-15 col-sm-12">
-                                     <div class="form-group">
-                                         <label class="form-label">User Name</label>
-                                         <input 
-                                         class=" form-control"
-                                         placeholder="User Name"
-                                         type="text"
-                                         formControlName="UserName"
-                                         [ngClass]="{ 'is-invalid': submitted && f.UserName.errors }"
-                                       />
-                                    </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="User Name">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <input type="email" class="form-control" placeholder="Email">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-8">
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control" placeholder="Password">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-primary ">Save changes</button>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </form>
                                 </div>
-                               
-                                <div class=" col-lg-60 col-md-60 col-sm-12">
-                                  <div class="form-group">
-                                       <label class="form-label">Password</label>
-                                       <input
-                                       class=" form-control"
-                                       placeholder="Password"
-                                       type="password"
-                                       value=""
-                                       formControlName="Password"
-                                       [ngClass]="{ 'is-invalid': submitted && f.Password.errors }"
-                                       
-                                   />
-                                </div>
-                                </div> 
-
-                                <div class=" col-lg-30 col-md-15 col-sm-12">
-                                    <div class="form-group">
-                                        <label class="form-label">Role</label>
-                                        <input 
-                                        class=" form-control"
-                                        placeholder="Enter role Admin/Employee"
-                                        type="text"
-                                        formControlName="Role"
-                                        [ngClass]="{ 'is-invalid': submitted && f.Role.errors }"
-                                      />
-                                   </div>
-                               </div>
-                              
-                                <div class="form-footer">
-                                  <button type="submit" class="btn btn-primary btn-block" >Create new account</button>
-                                  <button class="btn btn-primary btn-block" type="reset" (click)="onReset()">Cancel</button>
-                                </div>
-                            </form>
-                          </div>
+                            </div>
                         </div>
+                    
+                        
                     </div>
-                </div> 
-            </div>
+
+        </div>
         </div>
     </div>
     <app-footer></app-footer>
 </div>
+
+ 

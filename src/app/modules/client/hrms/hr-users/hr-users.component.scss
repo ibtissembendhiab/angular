@@ -4,8 +4,38 @@
     height: 600px;
 
 }
+.position{
+margin-right: 150px;
+margin-left: 150px;
+}
+
 form{
-    margin-left: 100px;
-    margin-right: 100px;
+    margin-left: 70px;
+    margin-right: 70px;
     
 }
+.card-body {
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.card-profile{
+    margin-top: 90px;
+    text-align: center;
+    margin-left: 300px;
+
+    .card-avatar {
+        margin: -50px auto 0;
+        border-radius: 50%;
+        overflow: hidden;
+        padding: 0;
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    .card-avatar {
+      max-width: 130px;
+      max-height: 130px;
+    }
+  }

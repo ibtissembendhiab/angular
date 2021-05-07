@@ -4,12 +4,13 @@
             <a class="header-brand" [routerLink]="['/hr-dashboard']" href="javascript:void(0)"><i
                     class="fe fe-command brand-logo"></i></a>
             <div class="dropdown">
-               <a [routerLink]="['/archive']" href="javascript:void(0)" class="nav-link icon"><i
-                        class="fa fa-archive"></i></a>
+              
                 <a [routerLink]="['/contacts']" href="javascript:void(0)" class="nav-link icon xs-hide"><i
                         class="fa fa-id-card-o"></i></a>
                 <a [routerLink]="['/filemanager']" href="javascript:void(0)" class="nav-link icon app_file xs-hide"><i
                         class="fa fa-folder-o"></i></a>
+                <a [routerLink]="['/hr-users']" href="javascript:void(0)" class="nav-link icon"><i
+                        class="fa fa-edit"></i></a>
             </div>
         </div>
         <div class="hright">
@@ -181,18 +182,18 @@
                     [attr.aria-expanded]="!isAuthCollapsed" aria-controls="AuthCollapsed" class="has-arrow arrow-c" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a class="submenu"
                             [routerLink]="['/hr-dashboard']" href="javascript:void(0)"><span>Dashboard</span>
                         </a></li></ul>
-                  <ul> <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
-                        <a class="submenu" href="javascript:void(0)" (click)="isAuthCollapsed = !isAuthCollapsed"
-                        [attr.aria-expanded]="!isAuthCollapsed" aria-controls="AuthCollapsed" class="has-arrow arrow-c" [routerLink]="['/hr-users']" href="javascript:void(0)"><span>Users</span></a>
-                    </li></ul> 
-
+                 
                   <ul>  <li href="javascript:void(0)" (click)="isAuthCollapsed = !isAuthCollapsed"
                     [attr.aria-expanded]="!isAuthCollapsed" aria-controls="AuthCollapsed" class="has-arrow arrow-c" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a class="submenu"
                             [routerLink]="['/hr-departments']" href="javascript:void(0)"><span>Groups</span></a>
                     </li></ul>
                 
 
-           
+                    <ul> <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                        <a class="submenu" href="javascript:void(0)" (click)="isAuthCollapsed = !isAuthCollapsed"
+                        [attr.aria-expanded]="!isAuthCollapsed" aria-controls="AuthCollapsed" class="has-arrow arrow-c" [routerLink]="['/hr-users']" href="javascript:void(0)"><span>Profile</span></a>
+                    </li></ul> 
+
            
         </ul>
     </nav>

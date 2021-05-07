@@ -1,9 +1,11 @@
+import { UserModel } from "./user.model";
+
 export class group{
     groupId:number;
     GroupName:string;
-    Description:string;
+    GroupDesc:string;
     CreatedDate:string;
-   // listInterUsers:userclient;
+    listInterUsers:UserModel;
     constructor()
     {  }
 }

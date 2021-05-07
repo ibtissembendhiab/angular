@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FormElementComponent } from './form-element/form-element.component';
 import { TablesComponent } from './UI-ELEMENTS/tables/tables.component';
 import { FilemanagerComponent } from './filemanager/filemanager.component';
 import { ContactsComponent } from './contacts/contacts.component';
@@ -19,17 +18,19 @@ import { IconFlagsComponent } from './UI-ELEMENTS/icons/icon-flags/icon-flags.co
 import { IconPaymentsComponent } from './UI-ELEMENTS/icons/icon-payments/icon-payments.component';
 import { GalleryComponent } from './ui-elements/gallery/gallery.component';
 import { DashboardAdminComponent } from './dashboard-admin/dashboard-admin.component';
+import { AuthGuard } from 'src/app/core/services/auth.guard';
 
 const routes: Routes = [
   {
     path: 'hr',
     component: HRMSComponent,
+    canActivate:[AuthGuard],
     data: { title: 'Home' }
   },
   {
     path: 'hr-dashboard',
-    component: HrDashboardComponent,
-    data: { title: 'Home' }
+    component: HrDashboardComponent, canActivate:[AuthGuard],
+    data: { title: 'Home'  }
   },
   {
     path: 'hr-users',
@@ -38,7 +39,7 @@ const routes: Routes = [
   },
   {
     path: 'hr-departments',
-    component: HrDepartmentsComponent,
+    component: HrDepartmentsComponent,canActivate:[AuthGuard],
     data: { title: 'Groupes' }
   },
  
@@ -56,7 +57,7 @@ const routes: Routes = [
   
   {
     path: 'filemanager',
-    component: FilemanagerComponent,
+    component: FilemanagerComponent, canActivate:[AuthGuard],
     data: { title: 'Filemanager' }
   },
   {
@@ -93,11 +94,6 @@ const routes: Routes = [
     path: 'gallery',
     component: GalleryComponent,
     data: { title: ' Gallery' }
-  },
-  {
-    path: 'formelement',
-    component: FormElementComponent,
-    data: { title: ' Forms' }
   },
   {
     path: 'settings',

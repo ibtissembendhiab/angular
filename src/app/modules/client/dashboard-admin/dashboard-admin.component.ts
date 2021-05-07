@@ -10,7 +10,7 @@ import { ArchiveService } from 'src/app/core/services/archive.service';
 import { SignupService } from 'src/app/core/services/signup.service';
 import { UploadService } from 'src/app/core/services/upload.service';
 import { UserService } from 'src/app/core/services/user.service';
-import { group } from 'src/app/shared/group.model';
+import { group } from 'src/app/shared/models/group.model';
 import { ProgressStatus, ProgressStatusEnum } from './progresststatus.model';
 
 @Component({
@@ -160,7 +160,11 @@ public listgroup:group[]
     this.registerService.register(this.registerForm.value)
         .pipe(first())
         .subscribe(
-            data => { this.toastr.success("User added successfully");
+            data => {
+              console.log(data)
+              localStorage.setItem('token', data.token)
+              this.router.navigate(['/dashboard-admin'])
+               this.toastr.success("User added successfully");
             },
             error => {
                 this.loading = false;
